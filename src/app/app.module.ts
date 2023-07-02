@@ -7,6 +7,9 @@ import { SigninComponent } from './authentication/signin/signin.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserserviceService } from './services/userservice.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { AuthInterceptProvidoer } from './services/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +22,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule ,
+    MatIconModule
   ],
-  providers: [UserserviceService],
+  providers: [UserserviceService,AuthInterceptProvidoer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

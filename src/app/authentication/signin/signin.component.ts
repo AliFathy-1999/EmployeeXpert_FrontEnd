@@ -5,12 +5,13 @@ import { MatFormFieldControl } from '@angular/material/form-field';
 import {
   FormBuilder, FormGroup, Validators, FormControl
 } from '@angular/forms';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent
   
@@ -25,33 +26,22 @@ export class SigninComponent
     private formBuilder:FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    // private _userServices:UserserviceService
+    private _userServices:UserserviceService
     
   ) {
    
   }
 
 
- 
-
-  get f() {
-    return this.authForm.controls;
-  }
- 
-  //  noWhitespaceValidator(control: FormControl) {
-  //   const isWhitespace = (control.value || '').trim().length === 0;
-  //   const isValid = !isWhitespace;
-  //   return isValid ? null : { 'whitespace': true };
-  // }
   ngOnInit() {
     this.authForm = this.formBuilder.group({
-      username: [
+      userName: [
         null,
         Validators.compose([
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(15),
-          Validators.pattern(/^[a-zA-Z0-9]+$/),
+          Validators.maxLength(25),
+          Validators.pattern(/^[^\s]*$/)
           
         ])
       ],
@@ -60,24 +50,33 @@ export class SigninComponent
         Validators.compose([
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(15),
-          Validators.pattern(/^[a-zA-Z0-9]+$/),
+          Validators.maxLength(25),
+          Validators.pattern(/^[^\s]*$/)
 
         ])
       ]
     });
     
   }
+
+ 
   
   onSubmit() {
     this.submitted = true;
     this.loading = true;
-    this.error = '';
-    if (this.authForm.invalid) {
-      this.error = 'Username and Password not valid !';
-      return;
-    } 
-    console.log(this.error)
-          
+    this.error =''
+    console.log(this.authForm.value)
+    this._userServices.login(this.authForm.value, 'signin').subscribe(
+      (res) => {
+        console.log(res.data.token)
+        localStorage.setItem('userToken', res.data.token);
+        this._userServices.saveCurrentUser();
+        // this._router.navigate(['/Dashboard']);
+      },
+      (err) => {
+        this.loading = false;
+      this.error = err.error.message ;
+      }
+    );      
     }
   }
