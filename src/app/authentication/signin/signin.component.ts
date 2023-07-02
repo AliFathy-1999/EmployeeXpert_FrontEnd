@@ -68,9 +68,13 @@ export class SigninComponent
     console.log(this.authForm.value)
     this._userServices.login(this.authForm.value, 'signin').subscribe(
       (res) => {
-        console.log(res.data.token)
-        localStorage.setItem('userToken', res.data.token);
+      if(res.data.token){
+         localStorage.setItem('userToken', res.data.token);
         this._userServices.saveCurrentUser();
+      }else{
+        this.error="not found this user"
+      }
+       
         // this._router.navigate(['/Dashboard']);
       },
       (err) => {
