@@ -13,9 +13,6 @@ import { AuthInterceptProvidoer } from './services/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
-    
-   
   ],
   imports: [
     BrowserModule,
