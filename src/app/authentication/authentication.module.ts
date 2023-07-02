@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { SigninComponent } from './signin/signin.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { SigninComponent } from './signin/signin.component';
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthenticationModule { }
