@@ -7,21 +7,28 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private _userServices:UserserviceService) {}
+  constructor(private _userServices:UserserviceService,private _route: ActivatedRoute,
+    private _router: Router,) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = this._userServices.getToken()
-  
-       request = request.clone({
+  if(token){
+    request = request.clone({
       headers:request.headers.set('Authorization',`brearer ${token}`) 
    
     })
     return next.handle(request);
+  }
+  else{
+    this._router.navigate(['']);
+  }
+    
   }
 
 
