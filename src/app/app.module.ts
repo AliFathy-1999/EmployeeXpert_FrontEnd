@@ -1,49 +1,48 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserserviceService } from './services/userservice.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { NavComponent } from './nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthInterceptProvidoer } from './services/auth.interceptor';
-import { LoadingBarModule } from '@ngx-loading-bar/core';
-import { MainComponent } from './admin/dashboard/main/main.component';
-import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { PageLoaderComponent } from './layout/page-loader/page-loader.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { CoreModule } from './core';
-import { SharedModule } from './shared';
-import { NgScrollbarModule } from 'ngx-scrollbar';
-import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout.component';
+import { MatListModule } from '@angular/material/list';
+import { DashComponent } from './dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { SigninComponent } from './signin/signin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    MainLayoutComponent,
-    HeaderComponent,
-    SidebarComponent,
-    PageLoaderComponent,
-    AuthLayoutComponent,
-
+    NavComponent,
+    DashComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    HttpClientModule ,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
     MatIconModule,
-    LoadingBarModule,
-    CoreModule,
-    SharedModule,
-    NgScrollbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [UserserviceService,AuthInterceptProvidoer],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
