@@ -11,10 +11,9 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { SigninComponent } from './signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-
 @NgModule({
   declarations: [
-    SigninComponent
+    SigninComponent,
   ],
   imports: [
     MatInputModule,
@@ -25,7 +24,7 @@ import { SharedModule } from '../shared/shared.module';
     MatCardModule,
     MatDialogModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class AuthenticationModule { }

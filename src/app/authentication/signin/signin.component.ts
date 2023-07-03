@@ -17,8 +17,8 @@ import { NgIf } from '@angular/common';
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
-  standalone: true,
-  imports: [MatFormFieldModule,MatInputModule, FormsModule, ReactiveFormsModule, NgIf,MatButtonModule],
+  // standalone: true,
+  // imports: [MatFormFieldModule,MatInputModule, FormsModule, ReactiveFormsModule, NgIf,MatButtonModule],
 })
 export class SigninComponent implements OnInit
 {
