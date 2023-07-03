@@ -18,16 +18,16 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = this._userServices.getToken()
-  if(token){
+  // if(token){
     request = request.clone({
       headers:request.headers.set('Authorization',`brearer ${token}`) 
    
     })
     return next.handle(request);
-  }
-  else{
-    this._router.navigate(['']);
-  }
+ // }
+  // else{
+  //   this._router.navigate(['']);
+  // }
     
   }
 

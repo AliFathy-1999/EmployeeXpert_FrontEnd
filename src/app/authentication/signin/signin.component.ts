@@ -65,7 +65,7 @@ export class SigninComponent
     this.submitted = true;
     this.loading = true;
     this.error =''
-    console.log(this.authForm.value)
+   
     this._userServices.login(this.authForm.value, 'signin').subscribe(
       (res) => {
       if(res.data.token){

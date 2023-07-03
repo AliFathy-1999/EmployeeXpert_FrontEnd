@@ -10,10 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptProvidoer } from './services/auth.interceptor';
+import { EmployeeMessagesComponent } from './employee-messages/employee-messages.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
+    EmployeeMessagesComponent,
     
    
   ],
