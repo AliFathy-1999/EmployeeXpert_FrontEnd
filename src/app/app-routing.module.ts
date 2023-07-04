@@ -17,7 +17,7 @@ const routes: Routes = [
 },
 { path: 'addEmployee', component: AddEmployeeComponent},
 {path:'Messages',component:EmployeeMessagesComponent},
-{path:'Annnouncements',component:AnnouncementComponent},
+{path:'Announcements',component:AnnouncementComponent},
 ];
 
 @NgModule({
@@ -25,3 +25,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+  
