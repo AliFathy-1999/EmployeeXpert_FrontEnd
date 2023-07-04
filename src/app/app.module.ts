@@ -26,10 +26,16 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PayrollComponent } from './payroll/payroll.component';
 import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table'; 
 
 @NgModule({
   declarations: [
@@ -39,6 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     SigninComponent,
     AddEmployeeComponent,
     GetEmployeeComponent,
+    UpdateEmployeeComponent,
+    EmployeeDetailsComponent,
     PayrollComponent,
     PayrollDialogComponent
   ],
@@ -64,6 +72,11 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
     MatDialogModule,
     MatTableModule
   ],

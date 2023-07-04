@@ -3,15 +3,15 @@
 </div>
 
 <div class="mat-elevation-z8">
-    <table mat-table>
+    <table mat-table [dataSource]="dataSource">
   
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
       </ng-container>
       <ng-container matColumnDef="grossSalary">
         <th mat-header-cell *matHeaderCellDef> grossSalary </th>
-        <td mat-cell *matCellDef="let element"> {{element.grossSalary}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.grossSalary}} </td>
       </ng-container>
 
       <ng-container matColumnDef="userrName">
@@ -26,7 +26,7 @@
 
       <ng-container matColumnDef="deduction">
         <th mat-header-cell *matHeaderCellDef> deduction</th>
-        <td mat-cell *matCellDef="let element">{{element.deduction}}</td>
+        <td mat-cell *matCellDef="let element">{{element?.deduction}}</td>
       </ng-container>
 
        <!-- <ng-container matColumnDef="deduction">
@@ -36,12 +36,12 @@
 
        <ng-container matColumnDef="bonus">
         <th mat-header-cell *matHeaderCellDef>bonus</th>
-        <td mat-cell *matCellDef="let element">{{element.bonus}}</td>
+        <td mat-cell *matCellDef="let element">{{element?.bonus}}</td>
        </ng-container>
 
        <ng-container matColumnDef="netSalary">
         <th mat-header-cell *matHeaderCellDef>netSalary</th>
-        <td mat-cell *matCellDef="let element">{{element.netSalary}}</td>
+        <td mat-cell *matCellDef="let element">{{element?.netSalary}}</td>
        </ng-container>
 
       <ng-container matColumnDef="action">

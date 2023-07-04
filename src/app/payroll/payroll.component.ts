@@ -22,7 +22,7 @@ export class PayrollComponent implements OnInit , AfterViewInit{
   salary: any[] = [];
   displayedColumns: string[] = ['id', 'grossSalary', 'bonus', 'userrName', 'position', 'deduction', 'netSalary', 'action'];
 
-  dataSource = new MatTableDataSource<any>([]);
+  dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   totalCount!: number;
