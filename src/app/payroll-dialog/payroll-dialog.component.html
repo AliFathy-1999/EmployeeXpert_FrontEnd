@@ -40,10 +40,10 @@
                   <p class="text-danger" *ngIf="payrollForm.get('grossSalary')?.errors?.['required']">grossSalary Salary is required!
                   </p>
                   <p *ngIf="payrollForm.get('grossSalary')?.errors?.['max'] !== null && payrollForm.get('grossSalary')?.errors?.['max'] !== undefined">
-                    Number must be at least {{payrollForm.get('grossSalary')?.errors?.['max']}}.
+                    Number must be at least 3500
                   </p>
                   <p *ngIf="payrollForm.get('grossSalary')?.errors?.['min'] !== null && payrollForm.get('grossSalary')?.errors?.['min'] !== undefined">
-                    Number must be at least {{payrollForm.get('grossSalary')?.errors?.['min']}}.
+                    Number must be at less than 200000
                   </p>
                 </div>
               </div>

@@ -20,10 +20,10 @@ export class PayrollDialogComponent implements OnInit{
   grossSalary!:Number
   oldData!: SalaryData;
   toastr: any;
-  UpdateObj={
-    review:''}
-    obj:object={
-      rating:0
+
+    payrollObj:object={
+      bonus:Number,
+      grossSalary:Number
     }
   
   constructor(private _salary : SalaryService, private _dialogRef: MatDialogRef<PayrollDialogComponent>,
@@ -38,16 +38,11 @@ export class PayrollDialogComponent implements OnInit{
   submitData(payrollForm: FormGroup) {
     if (this.data) {
       if (this.payrollForm.valid) {
-      const formData = new FormData();
-      formData.append(
-        'bonus',
-        payrollForm.get('bonus')?.value ? payrollForm.get('bonus')?.value : this.oldData.bonus
-      );
-      formData.append(
-        'grossSalary',
-        payrollForm.get('grossSalary')?.value ? payrollForm.get('grossSalary')?.value : this.oldData.grossSalary
-      );
-      this._salary.editSalary(this.data.employeeId._id, formData).subscribe({
+        const payrollObj = {
+          bonus: payrollForm.get('bonus')?.value !== null && payrollForm.get('bonus')?.value !== undefined ? payrollForm.get('bonus')?.value : 0,
+          grossSalary: payrollForm.get('grossSalary')?.value ? payrollForm.get('grossSalary')?.value : this.oldData.grossSalary
+        };
+        this._salary.editSalary(this.data.employeeId._id, payrollObj).subscribe({
         next:(res: any) => {
           this._dialogRef.close(true);
           // this.toastr.success("Data Updated Successfully");
