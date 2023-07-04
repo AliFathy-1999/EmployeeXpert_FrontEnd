@@ -128,5 +128,6 @@ export class EmployeeMessagesComponent implements OnInit {
       return { notOnlyWhitespace: true };
     }
     return null;
-  }
+  }   
 }
+   

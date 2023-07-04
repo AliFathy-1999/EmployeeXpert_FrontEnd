@@ -244,12 +244,12 @@ body {
 .container .right .write {
   position: absolute;
   bottom: 29px;
-  left: 30px;
+  left: 107px;
   height: 42px;
   padding-left: 8px;
   border: 1px solid var(--light);
   background-color: #eceff1;
-  width: calc(100% - 58px);
+  width: calc(71% - 58px);
   border-radius: 5px;
 }
 .container .right .write input {
