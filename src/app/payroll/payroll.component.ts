@@ -1,9 +1,10 @@
-import {AfterViewInit, Component,Injectable,OnInit,ViewChild} from '@angular/core';
+import {AfterViewInit, Component,OnInit,ViewChild} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator,PageEvent} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PayrollDialogComponent } from '../payroll-dialog/payroll-dialog.component';
 import { SalaryService } from '../service/salary.service';
+// import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payroll',
@@ -11,13 +12,6 @@ import { SalaryService } from '../service/salary.service';
   styleUrls: ['./payroll.component.css']
 })
 export class PayrollComponent implements OnInit , AfterViewInit{
-
-  // data: any;
-  // totalCount!:number
-  // pageSize!:number
-
-
-  // displayedColumns: string[] = [ 'id','grossSalary' , 'bonus', 'userrName', 'position','deduction','netSalary','action'];
 
   salary: any[] = [];
   displayedColumns: string[] = ['id', 'grossSalary', 'bonus', 'userrName', 'position', 'deduction', 'netSalary', 'action'];
@@ -30,23 +24,17 @@ export class PayrollComponent implements OnInit , AfterViewInit{
   currentPageIndex = 1;
   totalPages!: number;
 
-  // dataSource = new MatTableDataSource<any>;
-  // @ViewChild(MatPaginator) paginator!: MatPaginator;
-  
+  // ,private toastr:ToastrService
 
 constructor(private _dialog:MatDialog, private _salary: SalaryService){
 
 }
-// salary:any=[]
-// currentPageIndex:number=1
-// totalPages!:number
+
 
 getAllSalary(){
   this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
     this.salary = res.data.docs;
-    console.log(this.salary)
     this.dataSource.data = res.data.docs;
-    // this.dataSource = new MatTableDataSource(this.salary);
     this.totalCount = res.data.totalDocs;
     this.totalPages = res.data.totalPages;
     this.dataSource.paginator = this.paginator;
@@ -64,6 +52,7 @@ openDialog(){
   next:(res:any)=>{
   if(res){
     this.getAllSalary();
+    // this.toastr.success("Data Deleted Successfully");
   }  
   }
 })
@@ -74,32 +63,8 @@ ngAfterViewInit() {
   this.dataSource.paginator = this.paginator;
 }
 
-// getAllSalary(){
-//   this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
-//     this.salary = res.data.docs;
-//     this.dataSource.data = res.data.docs;
-//     console.log( this.dataSource.data)
-//     this.totalCount = res.data.totalDocs;
-//     this.totalPages = res.data.totalPages;
-//     this.dataSource = new MatTableDataSource(this.dataSource.data);
-//     this.dataSource.paginator = this.paginator;
-//   })
 
-// }
-
-// getAllSalary(){
-//   this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
-//     this.salary = res.data.docs;
-//     // this.dataSource.data = res.data.docs;
-//     console.log( this.dataSource.data)
-//     this.dataSource = new MatTableDataSource(this.salary);
-//     this.totalCount = res.data.totalDocs;
-//     this.totalPages = res.data.totalPages;
-//     this.dataSource.paginator = this.paginator;
-//   })
-// }
-
-deleteBook(id:number){
+deletePayroll(id:number){
   this._salary.deleteEmployeeSalaryById(id).subscribe((res:any)=>{
     this.getAllSalary();
   })

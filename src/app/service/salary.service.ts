@@ -17,11 +17,11 @@ getAllSalary(page: number, limit: number): Observable<any> {
 
 deleteEmployeeSalaryById(id: number): Observable<any> {
   
-  return this._HttpClient.delete(`${this.ROOT_URL}/salary/${id}`);
+  return this._HttpClient.delete(`${this.ROOT_URL}salary/${id}`);
 
 }
 
 editSalary(id: number, data: object) {
-  return this._HttpClient.patch(`${this.ROOT_URL}/salary/${id}`, data);
+  return this._HttpClient.patch(`${this.ROOT_URL}salary/${id}`, data);
 }
 }
