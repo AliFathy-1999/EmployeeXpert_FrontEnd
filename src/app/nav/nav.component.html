@@ -5,9 +5,10 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="gotopage('signin')">Sign in</a>
-      <a routerLink="/dashboard" mat-list-item>Dashboard</a>
-      <a routerLink="/add-employee" mat-list-item>Add Employee</a>
+      <!-- <a mat-list-item (click)="gotopage('signin')">Sign in</a> -->
+      <!-- <a routerLink="/dashboard" mat-list-item>Dashboard</a>
+      <a routerLink="/addemployee" mat-list-item>Add Employee</a> -->
+      <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,7 +23,7 @@
       </button>
       <span>employeeXpert</span>
     </mat-toolbar>
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
 
