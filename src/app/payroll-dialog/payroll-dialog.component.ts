@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-payroll-dialog',
@@ -17,18 +17,13 @@ export class PayrollDialogComponent implements OnInit{
   oldData:any
   
 
-  constructor(
-    private _dialogRef: MatDialogRef<PayrollDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
+  constructor(private _dialogRef: MatDialogRef<PayrollDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   payrollForm = new FormGroup({
     bonus: new FormControl(null, [Validators.required]),
     grossSalary: new FormControl(null, [Validators.required]),
-    // categoryId: new FormControl(null, [Validators.required]),
-    // authorId: new FormControl(null, [Validators.required]),
-    // bookImage: new FormControl(null),
   });
 
   submitData(payrollForm: FormGroup) {
@@ -42,24 +37,14 @@ export class PayrollDialogComponent implements OnInit{
         'grossSalary',
         payrollForm.get('grossSalary')?.value ? payrollForm.get('grossSalary')?.value : this.oldData.grossSalary
       );
-      // formData.append(
-      //   'categoryId',
-      //   payrollForm.get('categoryId')?.value ? payrollForm.get('categoryId')?.value : this.oldData.categoryId
-      // );
-      // formData.append(
-      //   'authorId',
-      //   payrollForm.get('authorId')?.value ? payrollForm.get('authorId')?.value : this.oldData.authorId
-      // );
-      // if(this.file && this.file.length){
-      //   formData.append('bookImage',this.file[0] )
       }
-      // this._book.editBook(this.data.id, formData).subscribe({
-      //   next:(res: any) => {
-      //     this._dialogRef.close(true);
-      //   },
-        // error: (HttpErrorResponse) => {
-        //   this.toastr.error(HttpErrorResponse.error.message);
-        // }
+    //   this._book.editBook(this.data.id, formData).subscribe({
+    //     next:(res: any) => {
+    //       this._dialogRef.close(true);
+    //     },
+    //     error: (HttpErrorResponse) => {
+    //       this.toastr.error(HttpErrorResponse.error.message);
+    //     }
     // });
      }
     //else{

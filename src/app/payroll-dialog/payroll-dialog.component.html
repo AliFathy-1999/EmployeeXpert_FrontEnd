@@ -1,1 +1,59 @@
-<p>payroll-dialog works!</p>
+<div class="dialog">
+
+    <div mat-dialog-title>
+      <h3>Payroll Form</h3>
+    </div>
+    <div class="form-wrap">
+      <form [formGroup]="payrollForm" (ngSubmit)="submitData(payrollForm)">
+        <!-- <form > -->
+  
+        <div mat-dialog-content>
+  
+          <div class="row">
+  
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field appearance="outline" style=" vertical-align: middle;margin-top: 4%;">
+                  <mat-label>Bonus</mat-label>
+                  <input matInput style="vertical-align: middle;" type="text" class="form-control" formControlName="bonus" name="bonus">
+                </mat-form-field>
+                <div class="dialogVal alert-danger"
+                  *ngIf="payrollForm.get('name')?.errors != null && payrollForm.get('bonus')?.touched">
+                  <p class="text-danger" *ngIf="payrollForm.get('bonus')?.errors?.['required']">Bonus is required!</p>
+                  <p class="text-danger" *ngIf="payrollForm.get('bonus')?.errors?.['minlength']">Bonus minmum length 3</p>
+                </div>
+                <div *ngIf="nameMessage" class="alert mt-3 alert-danger text-center"
+                role="alert">{{nameMessage}}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <mat-form-field appearance="outline">
+                  <mat-label>Deduction</mat-label>
+                  <textarea matInput type="text" cols="50" class="form-control" formControlName="deduction" name="deduction"></textarea>
+                </mat-form-field>
+                <div class="dialogVal alert-danger"
+                  *ngIf="payrollForm.get('deduction')?.errors != null && payrollForm.get('deduction')?.touched">
+                  <p class="text-danger" *ngIf="payrollForm.get('deduction')?.errors?.['required']">Deduction is required!
+                  </p>
+                  <p class="text-danger" *ngIf="payrollForm.get('deduction')?.errors?.['minlength']">Deduction minmum
+                    length 30</p>
+                    <p class="text-danger" *ngIf="payrollForm.get('deduction')?.errors?.['maxlength']">Deduction maximum
+                      length 120</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+        <div mat-dialog-action class="action">
+          <button mat-raised-button class="btn btn-sucess btn-block p-3"
+            type="submit">{{data?'Update':'Save'}}</button>
+          <button mat-raised-button class="btn btn-danger btn-block p-3" (click)="closeDialog()"
+            type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

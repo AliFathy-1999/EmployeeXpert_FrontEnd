@@ -4,6 +4,7 @@ import { MatPaginator,PageEvent} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PayrollDialogComponent } from '../payroll-dialog/payroll-dialog.component';
 import { SalaryService } from '../service/salary.service';
+
 @Component({
   selector: 'app-payroll',
   templateUrl: './payroll.component.html',
@@ -11,26 +12,51 @@ import { SalaryService } from '../service/salary.service';
 })
 export class PayrollComponent implements OnInit , AfterViewInit{
 
-  data: any;
-  totalCount!:number
-  pageSize!:number
+  // data: any;
+  // totalCount!:number
+  // pageSize!:number
 
 
-  displayedColumns: string[] = ['id', 'pImage' ,'userName', 'position', 'grossSalary' ,'deduction', 'bonus','netSalary','action'];
-  dataSource = new MatTableDataSource<any>;
+  // displayedColumns: string[] = [ 'id','grossSalary' , 'bonus', 'userrName', 'position','deduction','netSalary','action'];
+
+  salary: any[] = [];
+  displayedColumns: string[] = ['id', 'grossSalary', 'bonus', 'userrName', 'position', 'deduction', 'netSalary', 'action'];
+
+  dataSource = new MatTableDataSource<any>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  totalCount!: number;
+  pageSize = 10;
+  currentPageIndex = 1;
+  totalPages!: number;
+
+  // dataSource = new MatTableDataSource<any>;
+  // @ViewChild(MatPaginator) paginator!: MatPaginator;
   
 
 constructor(private _dialog:MatDialog, private _salary: SalaryService){
 
 }
+// salary:any=[]
+// currentPageIndex:number=1
+// totalPages!:number
+
+getAllSalary(){
+  this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
+    this.salary = res.data.docs;
+    console.log(this.salary)
+    this.dataSource.data = res.data.docs;
+    // this.dataSource = new MatTableDataSource(this.salary);
+    this.totalCount = res.data.totalDocs;
+    this.totalPages = res.data.totalPages;
+    this.dataSource.paginator = this.paginator;
+  })
+}
 
 ngOnInit(): void {
   this.getAllSalary();
 }
-salary:any=[]
-currentPageIndex:number=1
-totalPages!:number
+
 
 openDialog(){
  const dialogRef= this._dialog.open(PayrollDialogComponent);
@@ -45,20 +71,33 @@ openDialog(){
 
 
 ngAfterViewInit() {
-  this.getAllSalary();
   this.dataSource.paginator = this.paginator;
 }
 
-getAllSalary(){
-  this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
-    this.salary = res.data;
-    this.totalCount = res.data.totalDocs;
-    this.totalPages = res.data.totalPages;
-    this.dataSource = new MatTableDataSource(this.salary);
-    this.dataSource.paginator = this.paginator;
-  })
+// getAllSalary(){
+//   this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
+//     this.salary = res.data.docs;
+//     this.dataSource.data = res.data.docs;
+//     console.log( this.dataSource.data)
+//     this.totalCount = res.data.totalDocs;
+//     this.totalPages = res.data.totalPages;
+//     this.dataSource = new MatTableDataSource(this.dataSource.data);
+//     this.dataSource.paginator = this.paginator;
+//   })
 
-}
+// }
+
+// getAllSalary(){
+//   this._salary.getAllSalary(this.currentPageIndex, 10).subscribe((res:any)=>{
+//     this.salary = res.data.docs;
+//     // this.dataSource.data = res.data.docs;
+//     console.log( this.dataSource.data)
+//     this.dataSource = new MatTableDataSource(this.salary);
+//     this.totalCount = res.data.totalDocs;
+//     this.totalPages = res.data.totalPages;
+//     this.dataSource.paginator = this.paginator;
+//   })
+// }
 
 deleteBook(id:number){
   this._salary.deleteEmployeeSalaryById(id).subscribe((res:any)=>{
