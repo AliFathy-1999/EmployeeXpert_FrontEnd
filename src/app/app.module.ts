@@ -11,12 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthInterceptProvidoer } from './services/auth.interceptor';
 import { EmployeeMessagesComponent } from './employee-messages/employee-messages.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent,
     EmployeeMessagesComponent,
+    AnnouncementComponent,
     
    
   ],

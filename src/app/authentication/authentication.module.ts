@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { SigninComponent } from './signin/signin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatCardModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AuthenticationModule { }

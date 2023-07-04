@@ -8,7 +8,7 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -18,20 +18,18 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let token = this._userServices.getToken()
-  // if(token){
-    request = request.clone({
-      headers:request.headers.set('Authorization',`brearer ${token}`) 
-   
-    })
+    if(token){
+      const modifiedRequest = request.clone({ headers:request.headers.set('Authorization',`brearer ${token}`) })
+      return next.handle(modifiedRequest).pipe(
+        tap((response) => {
+        }),
+        catchError((error) => {
+          return throwError(error);
+        })
+      );
+    }
     return next.handle(request);
- // }
-  // else{
-  //   this._router.navigate(['']);
-  // }
-    
-  }
-
-
+}
 }
 
 export const AuthInterceptProvidoer = {
