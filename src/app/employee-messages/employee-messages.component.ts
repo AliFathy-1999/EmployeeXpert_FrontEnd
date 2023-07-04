@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeMessagesService } from '../services/employee-messages.service';
+import { EmployeeMessagesService } from '../service/employee-messages.service';
 import {
   FormBuilder,
   FormGroup,

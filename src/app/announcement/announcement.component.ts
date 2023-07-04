@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AnnouncementService } from '../services/announcement.service';
+import { AnnouncementService } from '../service/announcement.service';
 import { DatePipe } from '@angular/common';
 import{
 FormBuilder,
@@ -30,7 +30,7 @@ constructor(private _announcements:AnnouncementService,private formBuilder: Form
       console.log(res)
       this.allAnnouncements = res.data.reverse()
 
-    },(err)=>{
+    },(err:any)=>{
       console.log(err)
     })
   }
@@ -39,10 +39,10 @@ constructor(private _announcements:AnnouncementService,private formBuilder: Form
     
   this._announcements.sendAnnouncement(
       {"message":this.newAnnouncement.value.newMessage,"title":this.newAnnouncement.value.title}).subscribe(
-        (res)=>{
+        (res:any)=>{
           console.log(res)
           this.getAllAnouncements()
-      },(err)=>{
+      },(err:any)=>{
          console.log(err)
       })
   }

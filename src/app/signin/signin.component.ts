@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserserviceService } from 'src/app/service/userservice.service';
+import { UserserviceService } from '../service/userservice.service';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
