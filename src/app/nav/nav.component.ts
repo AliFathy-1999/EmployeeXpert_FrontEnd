@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import {MatBadgeModule} from '@angular/material/badge';
-import { NotificationsService } from '../service/notifications.service';
 import { EmployeeMessagesService } from '../service/employee-messages.service';
 import { AnnouncementService } from '../service/announcement.service';
 import { interval } from 'rxjs';
@@ -29,7 +28,7 @@ export class NavComponent {
       map(result => result.matches),
       shareReplay()
     );
-    constructor(private router:Router , private _notifications:NotificationsService,
+    constructor(private router:Router , 
       private _EmployeeMessages: EmployeeMessagesService , private _Announcements: AnnouncementService){
         if(this.currentUser.role =='USER'){
 

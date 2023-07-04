@@ -36,7 +36,6 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     AnnouncementComponent,
     NavComponent,
     DashComponent,
-    SigninComponent,
     AddEmployeeComponent,
     GetEmployeeComponent
   ],
