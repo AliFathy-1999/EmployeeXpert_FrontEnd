@@ -5,18 +5,22 @@
       <div class="top" *ngIf="currentUser.role == 'USER'">YOUR Messages</div>
 
       <ul class="people">
+        <div *ngIf="currentUser.role == 'USER'">
         <li
           class="person"
           data-chat="person1"
-          *ngIf="currentUser.role == 'USER'"
         >
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg"
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/russ.jpeg"
             alt=""
           />
-          <div class="pt-2 name">Admin</div>
-        </li>
 
+          <div class="pt-2 name">Admin</div>
+
+
+          
+        </li>
+</div>
         <div *ngIf="currentUser.role == 'ADMIN'">
           <li
             class="person"
@@ -36,9 +40,15 @@
     </div>
     <div class="right">
       <div class="chat" *ngIf="EmployeeMessages">
-        <div class="top">
+        <div class="top" *ngIf="currentUser.role == 'ADMIN'">
           <span
             >To: <span class="name">{{ EmployeeName | uppercase }}</span></span
+          >
+        </div>
+
+        <div class="top" *ngIf="currentUser.role == 'USER'">
+          <span
+            >from: <span class="name">ADMIN</span></span
           >
         </div>
 

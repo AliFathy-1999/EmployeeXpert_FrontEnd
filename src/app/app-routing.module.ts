@@ -17,7 +17,7 @@ const routes: Routes = [
 },
 { path: 'addEmployee', component: AddEmployeeComponent},
 {path:'Messages',component:EmployeeMessagesComponent},
-{path:'Annnouncements',component:AnnouncementComponent},
+{path:'Announcements',component:AnnouncementComponent},
 ];
 
 @NgModule({

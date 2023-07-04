@@ -28,6 +28,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,6 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     AnnouncementComponent,
     NavComponent,
     DashComponent,
-    SigninComponent,
     AddEmployeeComponent,
     GetEmployeeComponent
   ],
@@ -62,6 +65,8 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatBadgeModule ,
+    FontAwesomeModule 
   ],
   providers: [
     AuthInterceptProvidoer

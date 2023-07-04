@@ -9,6 +9,15 @@
       <!-- <a routerLink="/dashboard" mat-list-item>Dashboard</a>
       <a routerLink="/addemployee" mat-list-item>Add Employee</a> -->
       <a *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item"> {{item | titlecase}} </a>
+
+      <a [routerLink]='["/Messages"]' class="notification" (click)='toggleMessageBadgeVisibility()'>
+        <span>MESSAGES</span>
+        <span class="badge" *ngIf="messageNotifications"> New</span>
+      </a>
+      <a [routerLink]='["/Announcements"]' class="notification" (click)='toggleAnnouncementBadgeVisibility()'>
+        <span>ANNOUNCEMENTS</span>
+        <div class="badge" *ngIf="announcementNotifications" >New</div>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,6 +31,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>employeeXpert</span>
+      
     </mat-toolbar>
         <router-outlet></router-outlet>
   </mat-sidenav-content>

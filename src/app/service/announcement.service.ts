@@ -2,14 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AnnouncementService {
   ROOT_URL: string = 'https://employee-xpert.onrender.com';
-  Data :any =''
+  Data :any ;
   constructor(private _http: HttpClient) {
-   
+  
    }
 
   getAnnouncements(){

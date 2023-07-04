@@ -34,7 +34,7 @@ body {
 .container {
   position: relative;
   top: 53%;
-  left: 50%;
+  left: 41%;
   width: 81%;
   height: 75%;
   background-color: var(--white);
@@ -89,7 +89,7 @@ body {
   margin-left: 10px;
   border: 1px solid var(--light);
   background-color: var(--blue);
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/name-type.png");
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/russ.jpeg");
   background-repeat: no-repeat;
   background-position: top 12px left 14px;
   border-radius: 50%;

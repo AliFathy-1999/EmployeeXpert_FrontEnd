@@ -33,6 +33,7 @@ export class EmployeeMessagesComponent implements OnInit {
     if (this.currentUser.role === 'USER') {
       this.getEmpMessages();
     } else {
+      console.log("gjvjvhch")
       this.getAllEmployees();
     }
     
@@ -55,14 +56,14 @@ export class EmployeeMessagesComponent implements OnInit {
   }
 
   getsenderMessages(emp: any) {
-    console.log(emp._id);
+    console.log(emp._id)
     this.EmployeeMessages = this._EmployeeMessages
       .getAdminMessages(emp._id)
       .subscribe(
         (res: any) => {
           console.log(res.data);
           this.EmployeeMessages = res.data.reverse();
-          this.Employee = emp._id;
+          this.Employee = emp;
           this.EmployeeName = `${emp.firstName}  ${emp.lastName} `;
         },
         (err:any) => {
@@ -75,17 +76,22 @@ export class EmployeeMessagesComponent implements OnInit {
     const data: any = {
       message: this.sentMessage.value.newMessage,
       title: 'message',
-      employee: this.Employee,
+      employee: this.Employee._id,
     };
-    console.log(data);
+    
     this._EmployeeMessages.sendMessage(data).subscribe(
       (res:any) => {
+        console.log()
         this.getsenderMessages(this.Employee);
       },
       (err:any) => {
         console.log(err);
       }
     );
+
+    this.sentMessage.setValue({
+      newMessage: ''
+    })
   }
 
   getEmpData(id: string) {
@@ -107,7 +113,7 @@ export class EmployeeMessagesComponent implements OnInit {
           null,
           Validators.compose([
             Validators.required,
-            Validators.minLength(1),
+            Validators.minLength(5),
             Validators.maxLength(300),
             this.notOnlyWhitespace,
           ]),
