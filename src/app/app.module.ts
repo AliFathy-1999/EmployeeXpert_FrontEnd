@@ -1,49 +1,76 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserserviceService } from './services/userservice.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { NavComponent } from './nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthInterceptProvidoer } from './services/auth.interceptor';
-import { LoadingBarModule } from '@ngx-loading-bar/core';
-import { MainComponent } from './admin/dashboard/main/main.component';
-import { MainLayoutComponent } from './layout/app-layout/main-layout/main-layout.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { PageLoaderComponent } from './layout/page-loader/page-loader.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { CoreModule } from './core';
-import { SharedModule } from './shared';
-import { NgScrollbarModule } from 'ngx-scrollbar';
-import { AuthLayoutComponent } from './layout/app-layout/auth-layout/auth-layout.component';
+import { EmployeeMessagesComponent } from './employee-messages/employee-messages.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { MatListModule } from '@angular/material/list';
+import { DashComponent } from './dash/dash.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { SigninComponent } from './signin/signin.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { AuthInterceptProvidoer } from './Interceptor/interceptor.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
+import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    MainLayoutComponent,
-    HeaderComponent,
-    SidebarComponent,
-    PageLoaderComponent,
-    AuthLayoutComponent,
-
+    EmployeeMessagesComponent,
+    AnnouncementComponent,
+    NavComponent,
+    DashComponent,
+    AddEmployeeComponent,
+    GetEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    HttpClientModule ,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
     MatIconModule,
-    LoadingBarModule,
-    CoreModule,
-    SharedModule,
-    NgScrollbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatRadioModule,
+    MatBadgeModule ,
+    FontAwesomeModule 
   ],
-  providers: [UserserviceService,AuthInterceptProvidoer],
+  providers: [
+    AuthInterceptProvidoer
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
