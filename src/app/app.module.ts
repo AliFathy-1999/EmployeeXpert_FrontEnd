@@ -26,7 +26,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +40,9 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     DashComponent,
     SigninComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent
+    GetEmployeeComponent,
+    UpdateEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +66,11 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
