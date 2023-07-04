@@ -107,7 +107,7 @@ export class EmployeeMessagesComponent implements OnInit {
           null,
           Validators.compose([
             Validators.required,
-            Validators.minLength(1),
+            Validators.minLength(5),
             Validators.maxLength(300),
             this.notOnlyWhitespace,
           ]),

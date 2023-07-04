@@ -25,10 +25,7 @@ body {
     color: #4d4dff;
     text-decoration: none;
     transition: 0.25s ease;
-    &:hover {
-      border-color: #ff4d4d;
-      color: #ff4d4d;
-    }
+   
   }
   
  
@@ -122,9 +119,7 @@ button{
     text-transform: uppercase;
     position: relative;
     white-space: nowrap;
-    & a {
-      color: lighten(#333, 40%);
-    }
+   
   }
 
   .published-date {

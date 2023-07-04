@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AnnouncementService } from '../service/announcement.service';
 import { DatePipe } from '@angular/common';
+import { BehaviorSubject } from 'rxjs';
 import{
 FormBuilder,
 FormGroup,
@@ -17,17 +18,18 @@ ReactiveFormsModule,
 })
 export class AnnouncementComponent {
     allAnnouncements :any = []
-    currentUser     :any = {role:"ADMIN"}
+    currentUser     :any = {role:"USER"}
     newAnnouncement!: FormGroup;
+    announcementsChanged = new BehaviorSubject([]);
 constructor(private _announcements:AnnouncementService,private formBuilder: FormBuilder){
+  this.getAllAnouncements()
+  
 
-    this.getAllAnouncements()
-  }
+}
 
   getAllAnouncements(){
     this._announcements.getAnnouncements().subscribe((res:any)=>{
 
-      console.log(res)
       this.allAnnouncements = res.data.reverse()
 
     },(err:any)=>{
@@ -37,14 +39,21 @@ constructor(private _announcements:AnnouncementService,private formBuilder: Form
 
   sendNewAnnouncement(){
     
+    console.log(this.newAnnouncement.value.newMessage)
   this._announcements.sendAnnouncement(
-      {"message":this.newAnnouncement.value.newMessage,"title":this.newAnnouncement.value.title}).subscribe(
+      {"message":this.newAnnouncement.value.newMessage,"title":this.newAnnouncement.value.title,"isForAll":true}).subscribe(
         (res:any)=>{
           console.log(res)
           this.getAllAnouncements()
+          
       },(err:any)=>{
          console.log(err)
       })
+
+      this.newAnnouncement.setValue({
+        newMessage: '',
+        title: ''
+      });
   }
 
   ngOnInit() {
@@ -70,6 +79,7 @@ constructor(private _announcements:AnnouncementService,private formBuilder: Form
         ]
       });
     }
+   
   }
 
   notOnlyWhitespace(control: FormControl): { [key: string]: boolean } | null {
