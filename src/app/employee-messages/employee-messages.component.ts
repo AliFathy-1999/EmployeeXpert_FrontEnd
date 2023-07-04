@@ -47,7 +47,7 @@ export class EmployeeMessagesComponent implements OnInit {
           this.sender = result;
         });
       },
-      (err) => {
+      (err:any) => {
         console.log(err);
         this.EmployeeMessages = [];
       }
@@ -65,7 +65,7 @@ export class EmployeeMessagesComponent implements OnInit {
           this.Employee = emp._id;
           this.EmployeeName = `${emp.firstName}  ${emp.lastName} `;
         },
-        (err) => {
+        (err:any) => {
           this.EmployeeMessages = [];
         }
       );
@@ -79,10 +79,10 @@ export class EmployeeMessagesComponent implements OnInit {
     };
     console.log(data);
     this._EmployeeMessages.sendMessage(data).subscribe(
-      (res) => {
+      (res:any) => {
         this.getsenderMessages(this.Employee);
       },
-      (err) => {
+      (err:any) => {
         console.log(err);
       }
     );

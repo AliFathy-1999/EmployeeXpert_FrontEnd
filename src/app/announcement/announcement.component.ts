@@ -19,7 +19,7 @@ export class AnnouncementComponent {
     allAnnouncements :any = []
     currentUser     :any = {role:"ADMIN"}
     newAnnouncement!: FormGroup;
-   constructor(private _announcements:AnnouncementService,private formBuilder: FormBuilder){
+constructor(private _announcements:AnnouncementService,private formBuilder: FormBuilder){
 
     this.getAllAnouncements()
   }
