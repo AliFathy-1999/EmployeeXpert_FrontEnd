@@ -1,0 +1,70 @@
+<div class="addbtn">
+    <button mat-raised-button class="button-86" style="color: #f0f0f0;" (click)="openDialog()">Add Book</button>
+</div>
+
+<div class="mat-elevation-z8">
+    <table mat-table>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pImage">
+        <th mat-header-cell *matHeaderCellDef> Photo </th>
+        <td mat-cell *matCellDef="let element"> <img class="imgBook" width="50px" height="50px" src="{{element.pImage}}"> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element">{{element.userName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> position </th>
+        <td mat-cell *matCellDef="let element">{{element.position}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="grossSalary">
+        <th mat-header-cell *matHeaderCellDef> gross Salary</th>
+        <td mat-cell *matCellDef="let element">{{element.grossSalary}}</td>
+      </ng-container>
+
+       <ng-container matColumnDef="deduction">
+        <th mat-header-cell *matHeaderCellDef>deduction</th>
+        <td mat-cell *matCellDef="let element">{{element.deduction}}</td>
+       </ng-container>
+
+       <ng-container matColumnDef="bonus">
+        <th mat-header-cell *matHeaderCellDef>bonus</th>
+        <td mat-cell *matCellDef="let element">{{element.bonus}}</td>
+       </ng-container>
+
+       <ng-container matColumnDef="netSalary">
+        <th mat-header-cell *matHeaderCellDef>netSalary</th>
+        <td mat-cell *matCellDef="let element">{{element.netSalary}}</td>
+       </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary"><img class="editBg" src=""
+        ></button>
+        <button mat-icon-button color="warn">
+       <img width="100%" src=""></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- <mat-paginator [pageSizeOptions]="[10]"  [pageSize]="pageSize" [length]="totalCount" (page)="onPageChanged($event)" style="display: none;"></mat-paginator> -->
+
+    <!-- <button mat-icon-button (click)="onPreviousPage()" [disabled]="currentPageIndex === 1" style="margin-right: 1%;">
+      <img src="../../../assets/previous.png">
+      </button>
+   Page {{currentPageIndex}}
+       <button mat-icon-button (click)="onNextPage()" [disabled]="currentPageIndex==totalPages">
+<img src="../../../assets/next.png">
+       </button> -->

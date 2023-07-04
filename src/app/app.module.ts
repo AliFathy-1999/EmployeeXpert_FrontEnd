@@ -17,13 +17,20 @@ import { MatMenuModule } from '@angular/material/menu';
 import { SigninComponent } from './signin/signin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PayrollComponent } from './payroll/payroll.component';
+import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table'; 
+import { AuthInterceptProvidoer } from './service/auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DashComponent,
-    SigninComponent
+    SigninComponent,
+    PayrollComponent,
+    PayrollDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +47,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatTableModule
   ],
-  providers: [],
+  providers: [AuthInterceptProvidoer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
