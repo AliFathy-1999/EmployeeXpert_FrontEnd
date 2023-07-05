@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
   private breakpointObserver = inject(BreakpointObserver);
-  menuItems = ['signin','dashboard', 'addEmployee', 'getAllEmployees' , 'payroll'];
+  menuItems = ['signin','dashboard', 'addEmployee', 'getEmployees', 'customers','payroll', 'products','addVacation'];
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

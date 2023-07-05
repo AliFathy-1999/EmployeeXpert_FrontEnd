@@ -26,6 +26,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { AddVacationComponent } from './add-vacation/add-vacation.component';
+import { VacationDialogComponent } from './vacation-dialog/vacation-dialog.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -48,6 +50,8 @@ import { CookieService } from 'ngx-cookie-service';
     SigninComponent,
     AddEmployeeComponent,
     GetEmployeeComponent,
+    AddVacationComponent,
+    VacationDialogComponent,
     UpdateEmployeeComponent,
     EmployeeDetailsComponent,
     PayrollComponent,
@@ -63,6 +67,8 @@ import { CookieService } from 'ngx-cookie-service';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -77,6 +83,7 @@ import { CookieService } from 'ngx-cookie-service';
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatDialogModule,
     NgxPaginationModule,
     MatPaginatorModule,
     MatTableModule,
