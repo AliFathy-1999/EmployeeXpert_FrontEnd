@@ -41,41 +41,44 @@ export class VacationDialogComponent {
     totalDays: new FormControl(null, [Validators.required,Validators.min(0),Validators.max(21)]),
   });
 
+  // submitData(vacationForm: FormGroup) {
+  //   if (this.data) {
+  //     const formData =  {
+  //       employeeId: vacationForm.get('employeeId')?.value ?? this.oldData?.employeeId ?? null,
+  //       status: vacationForm.get('status')?.value ?? this.oldData?.status ?? null,
+  //       totalDays: vacationForm.get('totalDays')?.value ?? this.oldData?.totalDays ?? null,
+  //     };
+  //   //   this._vacation.updateVacation(this.data.id, formData).subscribe({
+  //   //     next:(res: any) => {
+  //   //       this._dialogRef.close(true);
+  //   //     },
+  //   //     error: (HttpErrorResponse) => {
+  //   //       this.toastr.error(HttpErrorResponse.error.message);
+  //   //     }
+  //   // });
+  //   }else{
+  //     const formData = new FormData();
+  //     formData.append()
+  //     // const formData = {
+  //     //   employeeId: vacationForm.get('employeeId')?.value,
+  //     //   status: vacationForm.get('status')?.value,
+  //     //   totalDays: vacationForm.get('totalDays')?.value,
+  //     // };
 
   submitData(vacationForm: FormGroup) {
-    if (this.data) {
-      const formData =  {
-        employeeId: vacationForm.get('employeeId')?.value ?? this.oldData?.employeeId ?? null,
-        status: vacationForm.get('status')?.value ?? this.oldData?.status ?? null,
-        totalDays: vacationForm.get('totalDays')?.value ?? this.oldData?.totalDays ?? null,
-      };
-    //   this._vacation.updateVacation(this.data.id, formData).subscribe({
-    //     next:(res: any) => {
-    //       this._dialogRef.close(true);
-    //     },
-    //     error: (HttpErrorResponse) => {
-    //       this.toastr.error(HttpErrorResponse.error.message);
-    //     }
-    // });
-    }else{
-      const formData = {
-        employeeId: vacationForm.get('employeeId')?.value,
-        status: vacationForm.get('status')?.value,
-        totalDays: vacationForm.get('totalDays')?.value,
-      };
-
-// console.log(formData.get(this.employeeId).valueOf);
-      this._vacation.addVacationByAdmin(formData).subscribe({next:(res: any)=> {
+    // if (this.data) {
+      const vacationObj = {
+         employeeId: vacationForm.get('employeeId')?.value,
+         status: vacationForm.get('status')?.value,
+         totalDays: vacationForm.get('totalDays')?.value,
+       };
+      this._vacation.addVacationByAdmin(vacationObj).subscribe({next:(res: any)=> {
           this._dialogRef.close(true);
         },error: (HttpErrorResponse) => {
           this.toastr.error(HttpErrorResponse.error.message);
-        }
-        
+        }    
       });
-    }
-
-
-    
+    // }  
   }
 
 

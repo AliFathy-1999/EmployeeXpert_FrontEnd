@@ -18,12 +18,12 @@ export class AuthGuard implements CanActivate{
   constructor(private _auth: GlobalService ,private _router:Router,private _cookieService: CookieService){}
   
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):boolean {
-    
+
   const user=this._auth.currentUser.getValue();
   if(this._auth.currentUser.getValue()!==null){
     return true;
   }else{
-    this._router.navigate(['/user']);
+    // this._router.navigate(['/me/payroll']);
     return false;
   }
 
