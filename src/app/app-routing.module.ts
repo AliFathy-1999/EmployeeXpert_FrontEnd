@@ -10,6 +10,10 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
+import {AllEmployeeAttendanceComponent} from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
+import {CheckinCheckoutComponent}from './User-attendance/checkin-checkout/checkin-checkout.component';
+
 import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
 import { EmployeeViewComponent } from './employee-view/employee-view.component';
 import { AuthGuard } from "./auth.guard";
@@ -37,8 +41,14 @@ const routes: Routes = [
   {path:'Messages',canActivate: [AuthGuard],component:EmployeeMessagesComponent},
   {path:'Announcements',canActivate: [AuthGuard],component:AnnouncementComponent}
 
+,
+  {path:'allAttendance',component:AllEmployeeAttendanceComponent},
+  {path:'employeeAttendance',component:EmployeeAttendanceComponent},
+  {path:'checkinCheckout',component:CheckinCheckoutComponent},
 
-
+  {path:'allAttendance',component:AllEmployeeAttendanceComponent},
+  {path:'employeeAttendance',component:EmployeeAttendanceComponent},
+  {path:'checkinCheckout',component:CheckinCheckoutComponent},
 
 ];
 
