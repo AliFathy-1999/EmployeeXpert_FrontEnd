@@ -10,6 +10,7 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
 const routes: Routes = [
 //   { path: 'signin', component: SigninComponent },
 //   { path: 'dashboard', component: DashComponent,},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'updateEmployee/:id', component: UpdateEmployeeComponent},
   { path: 'employeeDetails/:id', component: EmployeeDetailsComponent},
   { path: 'payroll', component: PayrollComponent },
-  { path: 'me/payroll', component: EmployeePayrollComponent }
+  { path: 'me/payroll', component: EmployeePayrollComponent },
+  { path: 'employeeVacation', component: EmployeeVacarionComponent }
 
 
 ];

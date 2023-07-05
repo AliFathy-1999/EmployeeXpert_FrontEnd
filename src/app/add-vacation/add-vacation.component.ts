@@ -58,11 +58,7 @@ export class AddVacationComponent implements OnInit {
          })
        }
        
-      //  deleteBook(id:number){
-      //  this._book.deleteBookById(id).subscribe((res:any)=>{
-      //    this.getAllBooks();
-      //  })
-      //  }
+
 
       onPageChanged(event: PageEvent) {
         const newPageIndex = event.pageIndex;

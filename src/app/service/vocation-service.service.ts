@@ -46,4 +46,11 @@ export class VocationServiceService {
     return this._http.delete(`${this.api_url}/vacations/${id}`);
 
   }
+
+  updateVacation(id: number,data:object): Observable<any> {
+    // const options = { withCredentials: true };
+    // return this._HttpClient.delete(`https://bookary.onrender.com/admin/books/${id}`);
+    return this._http.put(`${this.api_url}/vacations/${id}`,data);
+
+  }
 }
