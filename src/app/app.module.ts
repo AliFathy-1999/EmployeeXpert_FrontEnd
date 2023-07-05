@@ -42,6 +42,10 @@ import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.co
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CookieService } from 'ngx-cookie-service';
 import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
+import { EmployeeNavComponent } from './employee-nav/employee-nav.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { EmployeeMessagesComponent } from './employee-messages/employee-messages.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,11 @@ import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation
     PayrollDialogComponent,
     EmployeePayrollComponent,
     BreadcrumbComponent,
-    EmployeeVacarionComponent
+    EmployeeVacarionComponent,
+    EmployeeViewComponent,
+    EmployeeNavComponent,
+    AnnouncementComponent,
+    EmployeeMessagesComponent
   ],
   imports: [
     BrowserModule,
