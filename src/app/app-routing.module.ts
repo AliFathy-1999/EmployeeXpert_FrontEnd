@@ -4,12 +4,11 @@ import { DashComponent } from './dash/dash.component';
 import { SigninComponent } from './signin/signin.component';
 import { NavComponent } from './nav/nav.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
-
 import { EmployeeMessagesComponent } from './employee-messages/employee-messages.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
-
-  
-
+import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
+import {AllEmployeeAttendanceComponent} from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
+import {CheckinCheckoutComponent}from './User-attendance/checkin-checkout/checkin-checkout.component';
 
 const routes: Routes = [
   { path: '', component: SigninComponent },
@@ -18,6 +17,10 @@ const routes: Routes = [
 { path: 'addEmployee', component: AddEmployeeComponent},
 {path:'Messages',component:EmployeeMessagesComponent},
 {path:'Announcements',component:AnnouncementComponent},
+{path:'allAttendance',component:AllEmployeeAttendanceComponent},
+{path:'employeeAttendance',component:EmployeeAttendanceComponent},
+{path:'checkinCheckout',component:CheckinCheckoutComponent},
+
 ];
 
 @NgModule({
@@ -25,4 +28,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-  

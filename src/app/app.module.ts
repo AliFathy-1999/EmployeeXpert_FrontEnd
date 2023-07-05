@@ -29,8 +29,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
 import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
-import { CheckinCheckoutComponent } from './User-attendance/checkin-checkout/checkin-checkout.component';
 import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator'; // Import MatPaginatorModule
+import { MatTableModule } from '@angular/material/table';
+import { CheckinCheckoutComponent } from './User-attendance/checkin-checkout/checkin-checkout.component'; // Import MatTableModule
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule
 
 @NgModule({
   declarations: [
@@ -42,8 +46,8 @@ import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-
     AddEmployeeComponent,
     GetEmployeeComponent,
     EmployeeAttendanceComponent,
+    AllEmployeeAttendanceComponent,
     CheckinCheckoutComponent,
-    AllEmployeeAttendanceComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,12 @@ import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule, // Add MatPaginatorModule to the imports array
+    MatTableModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule 
   ],
   providers: [
     AuthInterceptProvidoer
