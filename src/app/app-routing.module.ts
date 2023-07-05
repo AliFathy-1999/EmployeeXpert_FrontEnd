@@ -19,9 +19,7 @@ import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.co
 
 
 const routes: Routes = [
-  { path: '', component: SigninComponent },
-  { path: 'dashboard', component: DashComponent,
-},
+{ path: '', component: SigninComponent },
 { path: 'addEmployee', component: AddEmployeeComponent},
 {path:'Messages',component:EmployeeMessagesComponent},
 {path:'Announcements',component:AnnouncementComponent},
@@ -33,9 +31,6 @@ const routes: Routes = [
 { path: 'addEmployee', component: AddEmployeeComponent},
 { path: 'addVacation', component: AddVacationComponent},
 // { path: 'addVacation', component: AddVacationComponent},
-  { path: 'signin', component: SigninComponent },
-  { path: 'dashboard', component: DashComponent},
-  { path: 'addEmployee', component: AddEmployeeComponent},
   { path: 'getAllEmployees', component: GetEmployeeComponent},
   { path: 'updateEmployee/:id', component: UpdateEmployeeComponent},
   { path: 'employeeDetails/:id', component: EmployeeDetailsComponent},

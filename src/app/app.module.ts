@@ -44,9 +44,6 @@ import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.co
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
 import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator'; // Import MatPaginatorModule
-import { MatTableModule } from '@angular/material/table';
 import { CheckinCheckoutComponent } from './User-attendance/checkin-checkout/checkin-checkout.component'; // Import MatTableModule
 import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule
 
@@ -58,7 +55,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSn
     NavComponent,
     DashComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent
+    GetEmployeeComponent,
+    EmployeeAttendanceComponent,
+    AllEmployeeAttendanceComponent,
+    CheckinCheckoutComponent,
+    AddVacationComponent,
+    PayrollComponent,
+    BreadcrumbComponent,
+    EmployeePayrollComponent,
+    PayrollDialogComponent,
+    EmployeeDetailsComponent,
+    UpdateEmployeeComponent,
+    VacationDialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -84,6 +93,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSn
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    NgxPaginationModule
   ],
   providers: [
     AuthInterceptProvidoer
