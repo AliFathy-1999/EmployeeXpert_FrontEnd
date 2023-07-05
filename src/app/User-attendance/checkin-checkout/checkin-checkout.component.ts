@@ -8,7 +8,7 @@ import { CheckinCheckoutService } from './checkin-checkout.service';
   templateUrl: './checkin-checkout.component.html',
   styleUrls: ['./checkin-checkout.component.css']
 })
-export class CheckinCheckoutComponent  {
+export class CheckinCheckoutComponent {
   checkForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +35,6 @@ console.log(`this.checkForm.value.employeeId ${this.checkForm.value.employeeId}`
       (error) => {
         this.snackBar.open(error.error.message || 'An error occurred', 'Close', {
           duration: 3000,
-
         });
       }
     );
