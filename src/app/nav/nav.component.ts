@@ -20,7 +20,7 @@ export class NavComponent {
   currentUser = {role:'USER'}
   announcements : any = ''
   empMessages:any = ''
-  
+
 
   private breakpointObserver = inject(BreakpointObserver);
   menuItems = ['signin','dashboard', 'addEmployee', 'getEmployees', 'customers','payroll', 'products','addVacation'];
@@ -29,7 +29,7 @@ export class NavComponent {
       map(result => result.matches),
       shareReplay()
     );
-    constructor(private router:Router , 
+    constructor(private router:Router ,
       private _EmployeeMessages: EmployeeMessagesService , private _Announcements: AnnouncementService , private message :EmployeeMessagesComponent ){
         if(this.currentUser.role =='USER'){
 
@@ -37,18 +37,18 @@ export class NavComponent {
          this.announcements=res.data})}
          this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
          this.empMessages=res.data})
-        
+
          this.checkifNewMessages()
          this.checkifNewAnnouncements()
-        
+
         }
-        
-      
-    
+
+
+
     gotopage(page:string){
       this.router.navigate([`${page}`])
-    }  
-  
+    }
+
 
     toggleMessageBadgeVisibility(){
       this.messageNotifications = false
@@ -59,35 +59,35 @@ export class NavComponent {
 
     checkifNewMessages(){
 
-      // interval(4000).subscribe(() => {
-      //   console.log("send")
-      //   this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
-        
-      //     console.log(res.data,this.empMessages)
-      //   if(res.data.length>this.empMessages.length){
-      //     this.messageNotifications = true
-      //     console.log("recieved")
-      //     this.empMessages=res.data
-      //     this.message.getEmpMessages
-      //   }
-      //   });
-      // });
+      interval(4000).subscribe(() => {
+        console.log("send")
+        this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
+
+          console.log(res.data,this.empMessages)
+        if(res.data.length>this.empMessages.length){
+          this.messageNotifications = true
+          console.log("recieved")
+          this.empMessages=res.data
+          this.message.getEmpMessages
+        }
+        });
+      });
     }
 
     checkifNewAnnouncements(){
 
-      // interval(4000).subscribe(() => {
-      //   console.log("send")
-      //   this._Announcements.getAnnouncements().subscribe((res:any)=>{
-      //     console.log(res.data,this.announcements)
-      //   if(res.data.length>this.announcements.length){
-      //     this.announcementNotifications= true
-      //     console.log("recieved")
-      //     this.announcements=res.data
-      //   }
-      //   });
-      // });
+      interval(4000).subscribe(() => {
+        console.log("send")
+        this._Announcements.getAnnouncements().subscribe((res:any)=>{
+          console.log(res.data,this.announcements)
+        if(res.data.length>this.announcements.length){
+          this.announcementNotifications= true
+          console.log("recieved")
+          this.announcements=res.data
+        }
+        });
+      });
     }
 
 
-  }                                  
+  }

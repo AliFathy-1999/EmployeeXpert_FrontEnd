@@ -43,60 +43,60 @@ export class EmployeeMessagesComponent implements OnInit {
       console.log("gjvjvhch")
       this.getAllEmployees();
     }
-    
+
   }
 
   getEmpMessages() {
-    // this.EmployeeMessages = this._EmployeeMessages.getUserMessages().subscribe(
-    //   (res: any) => {
-    //     console.log(res.data);
-    //     this.EmployeeMessages = res.data.reverse();
-        
-    //   },
-    //   (err:any) => {
-    //     console.log(err);
-    //     this.EmployeeMessages = [];
-    //   }
-    // );
+    this.EmployeeMessages = this._EmployeeMessages.getUserMessages().subscribe(
+      (res: any) => {
+        console.log(res.data);
+        this.EmployeeMessages = res.data.reverse();
+
+      },
+      (err:any) => {
+        console.log(err);
+        this.EmployeeMessages = [];
+      }
+    );
     console.log("called")
   }
 
 
 
   getsenderMessages(emp: any) {
-    // console.log(emp._id)
-    // this.EmployeeMessages = this._EmployeeMessages
-    //   .getAdminMessages(emp._id)
-    //   .subscribe(
-    //     (res: any) => {
-    //       console.log(res.data);
-    //       this.EmployeeMessages = res.data.reverse();
-    //       this.Employee = emp;
-    //       this.EmployeeName = `${emp.firstName}  ${emp.lastName} `;
-    //     },
-    //     (err:any) => {
-    //       this.EmployeeMessages = [];
-    //     }
-    //   );
+    console.log(emp._id)
+    this.EmployeeMessages = this._EmployeeMessages
+      .getAdminMessages(emp._id)
+      .subscribe(
+        (res: any) => {
+          console.log(res.data);
+          this.EmployeeMessages = res.data.reverse();
+          this.Employee = emp;
+          this.EmployeeName = `${emp.firstName}  ${emp.lastName} `;
+        },
+        (err:any) => {
+          this.EmployeeMessages = [];
+        }
+      );
   }
 
   sendMessagestoEmp() {
-    // console.log(this.Employee)
-    // const data: any = {
-    //   message: this.sentMessage.value.newMessage,
-    //   title: 'message',
-    //   employee: this.Employee._id,
-    // };
-    
-    // this._EmployeeMessages.sendMessage(data).subscribe(
-    //   (res:any) => {
-    //     console.log()
-    //     this.getsenderMessages(this.Employee);
-    //   },
-    //   (err:any) => {
-    //     console.log(err);
-    //   }
-    // );
+    console.log(this.Employee)
+    const data: any = {
+      message: this.sentMessage.value.newMessage,
+      title: 'message',
+      employee: this.Employee._id,
+    };
+
+    this._EmployeeMessages.sendMessage(data).subscribe(
+      (res:any) => {
+        console.log()
+        this.getsenderMessages(this.Employee);
+      },
+      (err:any) => {
+        console.log(err);
+      }
+    );
 
     this.sentMessage.setValue({
       message:""
@@ -130,7 +130,7 @@ export class EmployeeMessagesComponent implements OnInit {
       });
     }
 
-    
+
 
   }
 
@@ -139,9 +139,8 @@ export class EmployeeMessagesComponent implements OnInit {
       return { notOnlyWhitespace: true };
     }
     return null;
-  }   
+  }
 
 
 
 }
-               
