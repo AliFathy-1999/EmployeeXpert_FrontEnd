@@ -21,12 +21,16 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
-
+import { AddVacationComponent } from './add-vacation/add-vacation.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { VacationDialogComponent } from './vacation-dialog/vacation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,9 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     DashComponent,
     SigninComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent
+    GetEmployeeComponent,
+    AddVacationComponent,
+    VacationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +50,8 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -58,6 +66,7 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatDialogModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
