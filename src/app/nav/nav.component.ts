@@ -59,34 +59,34 @@ export class NavComponent {
 
     checkifNewMessages(){
 
-      interval(4000).subscribe(() => {
-        console.log("send")
-        this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
+      // interval(4000).subscribe(() => {
+      //   console.log("send")
+      //   this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
         
-          console.log(res.data,this.empMessages)
-        if(res.data.length>this.empMessages.length){
-          this.messageNotifications = true
-          console.log("recieved")
-          this.empMessages=res.data
-          this.message.getEmpMessages
-        }
-        });
-      });
+      //     console.log(res.data,this.empMessages)
+      //   if(res.data.length>this.empMessages.length){
+      //     this.messageNotifications = true
+      //     console.log("recieved")
+      //     this.empMessages=res.data
+      //     this.message.getEmpMessages
+      //   }
+      //   });
+      // });
     }
 
     checkifNewAnnouncements(){
 
-      interval(4000).subscribe(() => {
-        console.log("send")
-        this._Announcements.getAnnouncements().subscribe((res:any)=>{
-          console.log(res.data,this.announcements)
-        if(res.data.length>this.announcements.length){
-          this.announcementNotifications= true
-          console.log("recieved")
-          this.announcements=res.data
-        }
-        });
-      });
+      // interval(4000).subscribe(() => {
+      //   console.log("send")
+      //   this._Announcements.getAnnouncements().subscribe((res:any)=>{
+      //     console.log(res.data,this.announcements)
+      //   if(res.data.length>this.announcements.length){
+      //     this.announcementNotifications= true
+      //     console.log("recieved")
+      //     this.announcements=res.data
+      //   }
+      //   });
+      // });
     }
 
 

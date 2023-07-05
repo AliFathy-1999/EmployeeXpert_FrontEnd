@@ -18,13 +18,14 @@ export class AllEmployeeAttendanceComponent {
 
   this.allAttendanceService.all(page, limit).subscribe(
     (response) => {
-      setTimeout(() => { // simulate a 5 second delay
+      console.log('response',response);
+
 
       this.attendances = response.data;
       this.isLoading = false; // set isLoading to false once data is loaded
 
       console.log('this.attendances',this.attendances[0]);
-    }, 3000);    },
+  },
     (error: any) => {
       console.log(error);
     }
