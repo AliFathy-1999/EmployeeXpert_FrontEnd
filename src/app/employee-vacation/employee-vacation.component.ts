@@ -7,37 +7,36 @@ import { VocationServiceService } from '../service/vocation-service.service';
 import { VacationDialogComponent } from '../vacation-dialog/vacation-dialog.component';
 import {Vacation} from '../vacation';
 @Component({
-  selector: 'app-add-vacation',
-  templateUrl: './add-vacation.component.html',
-  styleUrls: ['./add-vacation.component.css']
+  selector: 'app-employee-vacarion',
+  templateUrl: './employee-vacation.component.html',
+  styleUrls: ['./employee-vacarion.component.css']
 })
-
-export class AddVacationComponent implements OnInit {
+export class EmployeeVacarionComponent {
   data!: any;
   totalCount!:number
   pageSize:number=10;
   
   ngOnInit(): void {
-    this.getAllVacations();
+    this.getAllEmployeeVacations();
       }
       constructor(private _vacation:VocationServiceService, private _dialog:MatDialog){}
       vacations:Vacation[]=[]
       currentPageIndex:number=0
       totalPages!:number
       
-      openDialog(){
-        const dialogRef= this._dialog.open(VacationDialogComponent);
-        dialogRef.afterClosed().subscribe({
-         next:(res:any)=>{
-         if(res){
-           this.getAllVacations();
-         }
-         }
-       })
-       }
+      // openDialog(){
+      //   const dialogRef= this._dialog.open(VacationDialogComponent);
+      //   dialogRef.afterClosed().subscribe({
+      //    next:(res:any)=>{
+      //    if(res){
+      //      this.getvacations();
+      //    }
+      //    }
+      //  })
+      //  }
 
        
- displayedColumns: string[] = ['firstName', 'lastName', 'reasonForVacation','fromDay','toDay','status','action'];
+ displayedColumns: string[] = [ 'reasonForVacation','fromDay','toDay','status','action'];
          dataSource = new MatTableDataSource<Vacation>();
          @ViewChild(MatPaginator) paginator!: MatPaginator;
        
@@ -45,15 +44,15 @@ export class AddVacationComponent implements OnInit {
            this.dataSource.paginator = this.paginator;
          }
        
-        getAllVacations(){
-         this._vacation.getAllVacations(this.currentPageIndex, this.pageSize).subscribe((res:any)=>{
+        getAllEmployeeVacations(){
+         this._vacation.getAllEmployeeVacations(this.currentPageIndex, this.pageSize).subscribe((res:any)=>{
         //  this.vacations=res.allVacations;
-         this.totalCount=res.allVacations.totalCount
-         this.totalPages=res.allVacations.totalPages
+         this.totalCount=res.vacations.totalCount
+         this.totalPages=res.vacations.totalPages
         //  this.dataSource=new MatTableDataSource(this.vacations);
-         this.dataSource.data = res.allVacations;
-         console.log(res.allVacations);
-         console.log("res.allVacations",res.allVacations[0].employeeId.firstName);
+         this.dataSource.data = res.vacations;
+         console.log(res.vacations);
+         console.log("res.allVacations",res.vacations[0].employeeId);
          this.dataSource.paginator=this.paginator;
          })
        }
@@ -70,9 +69,9 @@ export class AddVacationComponent implements OnInit {
         if (newPageIndex !== this.currentPageIndex || newPageSize !== this.pageSize) {
           this.currentPageIndex = newPageIndex;
           this.pageSize = newPageSize;
-          this._vacation.getAllVacations(this.currentPageIndex, this.pageSize).subscribe((result) => {
-            this.vacations=result.allVacations;
-            this.totalCount = result.allVacations.totalDocs;
+          this._vacation.getAllEmployeeVacations(this.currentPageIndex, this.pageSize).subscribe((result) => {
+            this.vacations=result.vacations;
+            this.totalCount = result.vacations.totalCount;
             this.dataSource = new MatTableDataSource(this.vacations);
             this.dataSource.paginator = this.paginator;
           });
@@ -82,9 +81,9 @@ export class AddVacationComponent implements OnInit {
       onPreviousPage() {
         if (this.currentPageIndex > 1) {
           this.currentPageIndex--;
-          this._vacation.getAllVacations(this.currentPageIndex, 10).subscribe((result) => {
-            this.vacations = result.allVacations;
-            this.totalCount = result.allVacations;
+          this._vacation.getAllEmployeeVacations(this.currentPageIndex, 10).subscribe((result) => {
+            this.vacations = result.vacations;
+            this.totalCount = result.vacations;
             this.dataSource = new MatTableDataSource(this.vacations);
             this.dataSource.paginator = this.paginator;
           });
@@ -94,9 +93,9 @@ export class AddVacationComponent implements OnInit {
       onNextPage() {
         if (this.currentPageIndex < this.totalPages) {
           this.currentPageIndex++;
-          this._vacation.getAllVacations(this.currentPageIndex, 10).subscribe((result) => {
-            this.vacations = result.allVacations;
-            this.totalCount = result.allVacations.totalDocs;
+          this._vacation.getAllEmployeeVacations(this.currentPageIndex, 10).subscribe((result) => {
+            this.vacations = result.vacations;
+            this.totalCount = result.vacations.totalCount;
             this.dataSource = new MatTableDataSource(this.vacations);
             this.dataSource.paginator = this.paginator;
           });

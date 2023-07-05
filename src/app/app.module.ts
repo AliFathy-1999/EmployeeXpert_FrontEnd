@@ -40,6 +40,7 @@ import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     PayrollComponent,
     PayrollDialogComponent,
     EmployeePayrollComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    EmployeeVacarionComponent
   ],
   imports: [
     BrowserModule,

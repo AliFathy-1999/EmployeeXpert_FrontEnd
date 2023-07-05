@@ -27,7 +27,13 @@ export class VocationServiceService {
     // const options = { withCredentials: true};
     return this._http.post(`${this.api_url}/vacations/admin`, vacationData);
   }
+  
 
+  getAllEmployeeVacations(page: number, limit: number): Observable<any> {
+    // const options = { withCredentials: true};
+    // console.log(limit);
 
+    return this._http.get(`${this.api_url}/vacations/emp/all?page=${page}&limit=${limit}`);
 
+  }
 }
