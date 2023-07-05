@@ -42,6 +42,10 @@ import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.co
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CookieService } from 'ngx-cookie-service';
 import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
+import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
+import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
+import { CheckinCheckoutComponent } from './User-attendance/checkin-checkout/checkin-checkout.component'; // Import MatTableModule
+import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSnackBarModule
 
 @NgModule({
   declarations: [
@@ -59,7 +63,10 @@ import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation
     PayrollDialogComponent,
     EmployeePayrollComponent,
     BreadcrumbComponent,
-    EmployeeVacarionComponent
+    EmployeeVacarionComponent,
+    EmployeeAttendanceComponent,
+    AllEmployeeAttendanceComponent,
+    CheckinCheckoutComponent,
   ],
   imports: [
     BrowserModule,

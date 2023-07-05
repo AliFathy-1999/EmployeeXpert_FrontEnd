@@ -10,6 +10,10 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
+import {AllEmployeeAttendanceComponent} from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
+import {CheckinCheckoutComponent}from './User-attendance/checkin-checkout/checkin-checkout.component';
+
 const routes: Routes = [
 //   { path: 'signin', component: SigninComponent },
 //   { path: 'dashboard', component: DashComponent,},
@@ -23,8 +27,10 @@ const routes: Routes = [
   { path: 'updateEmployee/:id', component: UpdateEmployeeComponent},
   { path: 'employeeDetails/:id', component: EmployeeDetailsComponent},
   { path: 'payroll', component: PayrollComponent },
-  { path: 'me/payroll', component: EmployeePayrollComponent }
-
+  { path: 'me/payroll', component: EmployeePayrollComponent },
+  {path:'allAttendance',component:AllEmployeeAttendanceComponent},
+  {path:'employeeAttendance',component:EmployeeAttendanceComponent},
+  {path:'checkinCheckout',component:CheckinCheckoutComponent},
 
 ];
 
