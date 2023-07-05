@@ -21,8 +21,6 @@ export class SigninComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.formData.value);
-
     this._global.signIn(this.formData.value).subscribe((res:any) =>{
       sessionStorage.setItem('token',res.data.token);
       this.toastr.success("Signin successfully")

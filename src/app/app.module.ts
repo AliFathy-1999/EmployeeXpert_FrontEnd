@@ -21,16 +21,26 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import {MatSelectModule} from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
 import { AddVacationComponent } from './add-vacation/add-vacation.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { VacationDialogComponent } from './vacation-dialog/vacation-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PayrollComponent } from './payroll/payroll.component';
+import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +51,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     GetEmployeeComponent,
     AddVacationComponent,
     VacationDialogComponent,
+    UpdateEmployeeComponent,
+    EmployeeDetailsComponent,
+    PayrollComponent,
+    PayrollDialogComponent,
+    EmployeePayrollComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -66,11 +82,17 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
-
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,12 @@
-
-<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="container card mt-5">
-  <h1 class="text-primary text-center mt-4">Employee Form</h1>
+<div class="container card mt-5">
+  <div class="alert alert-success mt-1" *ngIf="isUpdated">
+      {{message}}
+  </div>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-primary text-center mt-4">Edit Employee Form</h1>
   <div class="">
     <h2>First Name</h2>
-    <input class="form-control" formControlName="firstName" >
+    <input type="text" class="form-control" [(ngModel)]="employeeData.firstName" formControlName="firstName" >
     <div *ngIf="employeeForm.get('firstName')?.errors != null && employeeForm.get('firstName')?.touched">
       <mat-error *ngIf="employeeForm.get('firstName').hasError('required')">First Name is required</mat-error>
       <mat-error *ngIf="employeeForm.get('firstName').hasError('minlength')">First Name must be at least 3 characters</mat-error>
@@ -15,7 +18,7 @@
 
   <div appearance="fill">
     <h2>Last Name</h2>
-    <input class="form-control" formControlName="lastName">
+    <input class="form-control" formControlName="lastName" [(ngModel)]="employeeData.lastName">
     <div *ngIf="employeeForm.get('lastName')?.errors != null && employeeForm.get('lastName')?.touched">
       <mat-error *ngIf="employeeForm.get('lastName').hasError('required')">Last Name is required</mat-error>
       <mat-error *ngIf="employeeForm.get('lastName').hasError('minlength')">Last Name must be at least 3 characters</mat-error>
@@ -23,40 +26,9 @@
       <mat-error *ngIf="employeeForm.get('lastName').hasError('pattern')">Last Name must contain only alphabetic characters</mat-error>
     </div>
   </div>
-
-  <div appearance="fill">
-    <h2>Username</h2>
-    <input class="form-control" formControlName="userName">
-    <div *ngIf="employeeForm.get('userName')?.errors != null && employeeForm.get('userName')?.touched">
-      <mat-error *ngIf="employeeForm.get('userName').hasError('required')">Username is required</mat-error>
-      <mat-error *ngIf="employeeForm.get('userName').hasError('minlength')">Username must be at least 3 characters</mat-error>
-      <mat-error *ngIf="employeeForm.get('userName').hasError('maxlength')">Username must be less than 30 characters</mat-error>
-    </div>
-  </div>
-
-  <div>
-    <h2>Email</h2>
-    <input type="email" class="form-control" formControlName="email">
-    <div *ngIf="employeeForm.get('email')?.errors != null && employeeForm.get('email')?.touched">
-      <mat-error *ngIf="employeeForm.get('email').hasError('required')">Email is required</mat-error>
-      <mat-error *ngIf="employeeForm.get('email').hasError('email')">Invalid email format</mat-error>
-    </div>
-  </div>
-
-
-  <div appearance="fill">
-    <h2>Password</h2>
-    <input class="form-control" formControlName="password" [type]="hidePassword ? 'password' : 'text'">
-    <div *ngIf="employeeForm.get('password')?.errors != null && employeeForm.get('password')?.touched">
-      <mat-error *ngIf="employeeForm.get('password').hasError('required')">Password is required</mat-error>
-      <mat-error *ngIf="employeeForm.get('password').hasError('minlength')">Password must be at least 6 characters</mat-error>
-      <mat-error *ngIf="employeeForm.get('password').hasError('pattern')">Password must contain at least one number, one capital letter, and one special character</mat-error>
-    </div>
-  </div>
-
   <div appearance="fill">
     <h2>National ID</h2>
-    <input class="form-control" formControlName="nationalId">
+    <input class="form-control" formControlName="nationalId" [(ngModel)]="employeeData.nationalId">
     <div *ngIf="employeeForm.get('nationalId')?.errors != null && employeeForm.get('nationalId')?.touched">
       <mat-error *ngIf="employeeForm.get('nationalId').hasError('required')">National ID is required</mat-error>
       <mat-error *ngIf="employeeForm.get('nationalId').hasError('pattern')">Invalid Egyptian national ID number</mat-error>
@@ -65,7 +37,7 @@
 
   <div appearance="fill">
     <h2>Date of Birth</h2>
-      <input matInput type="date" class="form-control" formControlName="DOB">
+      <input matInput type="date" class="form-control" formControlName="DOB" [(ngModel)]="employeeData.DOB.split('T')[0]">
     <div *ngIf="employeeForm.get('DOB')?.errors != null && employeeForm.get('DOB')?.touched">
       <mat-error *ngIf="employeeForm.get('DOB').hasError('required')">Date of Birth is required</mat-error>
       <mat-error *ngIf="employeeForm.get('DOB').hasError('isUnder18')">Employee must be at least 18 years old</mat-error>
@@ -74,7 +46,7 @@
 
   <div appearance="fill">
     <h2>Gender</h2>
-    <mat-radio-group formControlName="gender">
+    <mat-radio-group formControlName="gender" [(ngModel)]="employeeData.gender">
       <mat-radio-button value="male">Male</mat-radio-button>
       <mat-radio-button value="female">Female</mat-radio-button>
     </mat-radio-group>
@@ -86,7 +58,7 @@
   <div formGroupName="academicQualifications">
     <h2>Academic Qualifications - College</h2>
     <div appearance="fill">
-      <input class="form-control" formControlName="college" type="text">
+      <input class="form-control" [(ngModel)]="employeeData.academicQualifications.college" formControlName="college" type="text">
       <div *ngIf="employeeForm.get('academicQualifications.college')?.errors != null && employeeForm.get('academicQualifications.college')?.touched">
         <mat-error *ngIf="employeeForm.get('academicQualifications.college').hasError('required')">College name is required</mat-error>
         <mat-error *ngIf="employeeForm.get('academicQualifications.college').hasError('minlength')">College name must be at least 2 characters</mat-error>
@@ -97,7 +69,7 @@
 
     <div appearance="fill">
       <h2>Academic Qualifications - Degree</h2>
-      <mat-select class="form-control" formControlName="degree" placeholder="Please Select a degree">
+      <mat-select class="form-control"[(ngModel)]="employeeData.academicQualifications.degree"  formControlName="degree" placeholder="Please Select a degree">
         <mat-option value="bachelor">Bachelor</mat-option>
         <mat-option value="master">Master</mat-option>
         <mat-option value="doctoral">Doctoral</mat-option>
@@ -110,7 +82,7 @@
 
     <div appearance="fill">
       <h2>Academic Qualifications - Institution</h2>
-      <input class="form-control" formControlName="institution" type="text">
+      <input class="form-control" formControlName="institution" type="text" [(ngModel)]="employeeData.academicQualifications.institution" >
       <div *ngIf="employeeForm.get('academicQualifications.institution')?.errors != null && employeeForm.get('academicQualifications.institution')?.touched">
         <mat-error *ngIf="employeeForm.get('academicQualifications.institution').hasError('required')">Institution is required</mat-error>
         <mat-error *ngIf="employeeForm.get('academicQualifications.institution').hasError('minlength')">Institution must be at least 2 characters</mat-error>
@@ -121,7 +93,7 @@
 
     <div appearance="fill">
       <h2>Academic Qualifications - Year</h2>
-      <input class="form-control" type="number" formControlName="year" min="1900" max={{currentYear}} step="1" title="Please enter a valid year (e.g., 1999)">
+      <input class="form-control" type="number" [(ngModel)]="employeeData.academicQualifications.year" formControlName="year" min="1900" max={{currentYear}} step="1" title="Please enter a valid year (e.g., 1999)">
       <div *ngIf="employeeForm.get('academicQualifications.year')?.errors != null && employeeForm.get('academicQualifications.year')?.touched">
         <mat-error *ngIf="employeeForm.get('academicQualifications.year').hasError('required')">Year is required</mat-error>
         <mat-error *ngIf="employeeForm.get('academicQualifications.year').hasError('min')">Graduation Year must be at least 1970</mat-error>
@@ -132,7 +104,7 @@
   </div>
   <div appearance="fill">
     <h2>Hire Date</h2>
-    <input matInput type="date" class="form-control" formControlName="hireDate">
+    <input matInput type="date" class="form-control" formControlName="hireDate" [(ngModel)]="employeeData.hireDate.split('T')[0]">
     <div *ngIf="employeeForm.get('hireData')?.errors != null && employeeForm.get('hireData')?.touched">
       <mat-error *ngIf="employeeForm.get('hireData').hasError('required')">Year is required</mat-error>
       <mat-error *ngIf="employeeForm.get('hireData').hasError('min')">Hire Data must be at least 1970</mat-error>
@@ -141,7 +113,7 @@
   </div>
   <div appearance="fill">
     <h2>Position</h2>
-    <input class="form-control" formControlName="position">
+    <input class="form-control" formControlName="position" [(ngModel)]="employeeData.position">
     <div *ngIf="employeeForm.get('position')?.errors != null && employeeForm.get('position')?.touched">
     <mat-error *ngIf="employeeForm.get('position').hasError('required')">Position is required</mat-error>
     <mat-error *ngIf="employeeForm.get('position').hasError('minlength')">Position must be at least 2 characters</mat-error>
@@ -152,7 +124,7 @@
 
   <div appearance="fill">
     <h2>Job Type</h2>
-    <mat-select class="form-control" formControlName="jobType" placeholder="Please select job type">
+    <mat-select class="form-control" formControlName="jobType" placeholder="Please select job type" [(ngModel)]="employeeData.jobType">
       <mat-option value="full-time">Full-time</mat-option>
       <mat-option value="part-time">Part-time</mat-option>
     </mat-select>
@@ -163,7 +135,7 @@
 </div>
   <div appearance="fill">
     <h2>Department ID</h2>
-    <select class="form-select" formControlName="depId">
+    <select class="form-select" formControlName="depId" [(ngModel)]="employeeData.depId._id">
       <option selected>Select Employee Department</option>
       <option *ngFor="let dep of departments" value={{dep._id}}>{{dep.name}}</option>
     </select>
@@ -174,7 +146,7 @@
 </div>
   <div appearance="fill">
     <h2>Salary</h2>
-    <input class="form-control" type="number" formControlName="salary" min="3500" max="200000">
+    <input class="form-control" type="number" [(ngModel)]="employeeData.salary" formControlName="salary" min="3500" max="200000">
     <div *ngIf="employeeForm.get('salary')?.errors != null && employeeForm.get('salary')?.touched">
     <mat-error *ngIf="employeeForm.get('salary').hasError('required')">Salary is required</mat-error>
     <mat-error *ngIf="employeeForm.get('salary').hasError('min')">Salary must be at least 3500</mat-error>
@@ -184,7 +156,7 @@
 
   <div appearance="fill">
     <h2>Phone Number</h2>
-    <input class="form-control" formControlName="phoneNumber">
+    <input class="form-control" formControlName="phoneNumber" [(ngModel)]="employeeData.phoneNumber">
     <div *ngIf="employeeForm.get('phoneNumber')?.errors != null && employeeForm.get('phoneNumber')?.touched">
 
     <mat-error *ngIf="employeeForm.get('phoneNumber').hasError('required')">Phone number is required</mat-error>
@@ -194,7 +166,7 @@
 
   <div class="mb-5">
     <h2>Address</h2>
-    <input class="form-control" formControlName="address" class="form-control">
+    <input class="form-control" formControlName="address" class="form-control" [(ngModel)]="employeeData.address">
     <div *ngIf="employeeForm.get('address')?.errors != null && employeeForm.get('address')?.touched">
 
     <mat-error *ngIf="employeeForm.get('address').hasError('required')">Address is required</mat-error>
@@ -205,5 +177,5 @@
   </div>
   <button mat-raised-button class="mb-4" color="primary" type="submit">Submit</button>
 </form>
-
+</div>
 
