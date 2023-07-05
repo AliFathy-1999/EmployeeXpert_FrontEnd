@@ -7,7 +7,7 @@ import { VocationServiceService } from '../service/vocation-service.service';
 import { VacationDialogComponent } from '../vacation-dialog/vacation-dialog.component';
 import {Vacation} from '../vacation';
 @Component({
-  selector: 'app-employee-vacarion',
+  selector: 'app-employee-vacation',
   templateUrl: './employee-vacation.component.html',
   styleUrls: ['./employee-vacarion.component.css']
 })
@@ -57,11 +57,11 @@ export class EmployeeVacarionComponent {
          })
        }
        
-      //  deleteBook(id:number){
-      //  this._book.deleteBookById(id).subscribe((res:any)=>{
-      //    this.getAllBooks();
-      //  })
-      //  }
+       deleteVacation(id:number){
+       this._vacation.deleteVacationById(id).subscribe((res:any)=>{
+         this.getAllEmployeeVacations();
+       })
+       }
 
       onPageChanged(event: PageEvent) {
         const newPageIndex = event.pageIndex;

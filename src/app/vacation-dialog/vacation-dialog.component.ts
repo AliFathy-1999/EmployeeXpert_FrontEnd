@@ -58,14 +58,14 @@ export class VacationDialogComponent {
     //     }
     // });
     }else{
-      // const formData = {
-      //   employeeId: vacationForm.get('employeeId')?.value,
-      //   status: vacationForm.get('status')?.value,
-      //   totalDays: vacationForm.get('totalDays')?.value,
-      // };
+      const formData = {
+        employeeId: vacationForm.get('employeeId')?.value,
+        status: vacationForm.get('status')?.value,
+        totalDays: vacationForm.get('totalDays')?.value,
+      };
 
 // console.log(formData.get(this.employeeId).valueOf);
-      this._vacation.addVacationByAdmin(vacationForm.value).subscribe({next:(res: any)=> {
+      this._vacation.addVacationByAdmin(formData).subscribe({next:(res: any)=> {
           this._dialogRef.close(true);
         },error: (HttpErrorResponse) => {
           this.toastr.error(HttpErrorResponse.error.message);

@@ -33,7 +33,15 @@ export class VocationServiceService {
     // const options = { withCredentials: true};
     // console.log(limit);
 
-    return this._http.get(`${this.api_url}/vacations/emp/all?page=${page}&limit=${limit}`);
+    return this._http.get(`${this.local_url}/vacations/emp/all?page=${page}&limit=${limit}`);
+
+  }
+
+
+  deleteVacationById(id: number): Observable<any> {
+    // const options = { withCredentials: true };
+    // return this._HttpClient.delete(`https://bookary.onrender.com/admin/books/${id}`);
+    return this._http.delete(`${this.api_url}/vacations/${id}`);
 
   }
 }

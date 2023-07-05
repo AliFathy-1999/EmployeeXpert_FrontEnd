@@ -11,9 +11,9 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
 import { PayrollComponent } from './payroll/payroll.component';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
 const routes: Routes = [
-  { path: 'signin', component: SigninComponent },
-  { path: 'dashboard', component: DashComponent,},
-{ path: 'addEmployee', component: AddEmployeeComponent},
+//   { path: 'signin', component: SigninComponent },
+//   { path: 'dashboard', component: DashComponent,},
+// { path: 'addEmployee', component: AddEmployeeComponent},
 { path: 'addVacation', component: AddVacationComponent},
 // { path: 'addVacation', component: AddVacationComponent},
   { path: 'signin', component: SigninComponent },

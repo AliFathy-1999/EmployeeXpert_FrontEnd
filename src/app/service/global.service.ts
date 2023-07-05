@@ -4,24 +4,60 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
-  currentUser = new BehaviorSubject(null);
+  // currentUser = new BehaviorSubject(null);
   public api_url = 'https://employee-xpert.onrender.com'
   public local_url = 'http://localhost:4000'
-  constructor(private http: HttpClient) { }
 
-  saveCurrentUser() {
-    let token: any = localStorage.getItem('userToken');
-    this.currentUser.next(jwtDecode(token));
+  token: string | null = this.getToken();
+
+  constructor(private http: HttpClient,  private _cookieService: CookieService, private _router: Router){
+  if(this._cookieService.check('token')){
+  this.saveCurrentUser()
+}
   }
-  getToken(){
-    return sessionStorage.getItem('token');
-  }
+
+currentUser = new BehaviorSubject<any>(null);
+saveCurrentUser(){
+const userToken= this._cookieService.get('token');
+this.currentUser.next(jwtDecode(userToken))
+}
+
+getUserRole(): string {
+const user = JSON.parse(localStorage.getItem('user') || '{}');
+return user.role;
+}
+
+isLogged(): boolean {
+return this._cookieService.get('token') != null;
+}
+
+
+isLogOut(){
+return this._cookieService.delete('token');
+}
+
+
+getToken(): string | null {
+return this._cookieService.get('token') || null;
+}
+
+
+
+  // saveCurrentUser() {
+  //   let token: any = localStorage.getItem('userToken');
+  //   this.currentUser.next(jwtDecode(token));
+  // }
+  // getToken(){
+  //   return sessionStorage.getItem('token');
+  // }
+  
   signIn(obj:any): Observable<any>{
     return this.http.post(`${this.api_url}/signin`,obj);
   }
