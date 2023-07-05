@@ -63,7 +63,7 @@ export class VacationDialogComponent {
         totalDays: vacationForm.get('totalDays')?.value,
       };
 
-// console.log(formData.get(this.employeeId).valueOf);
+    console.log(formData);
       this._vacation.addVacationByAdmin(formData).subscribe({next:(res: any)=> {
           this._dialogRef.close(true);
         },error: (HttpErrorResponse) => {
