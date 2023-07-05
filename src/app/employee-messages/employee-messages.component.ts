@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , DoCheck } from '@angular/core';
 import { EmployeeMessagesService } from '../service/employee-messages.service';
 import {
   FormBuilder,
@@ -8,12 +8,18 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-
+import { Injectable } from '@angular/core';
 @Component({
   selector: 'app-employee-messages',
   templateUrl: './employee-messages.component.html',
   styleUrls: ['./employee-messages.component.css'],
 })
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
 export class EmployeeMessagesComponent implements OnInit {
   EmployeeMessages: any;
   allEmployees    : any = '';
@@ -21,9 +27,10 @@ export class EmployeeMessagesComponent implements OnInit {
   sender          : any = '';
   Employees       : any = '';
   Employee        : any = '';
-  currentUser           = { userName: 'nada', role: 'ADMIN' };   //authgard
+  currentUser           = { userName: 'nada', role: 'USER' };   //authgard
   sentMessage!    : FormGroup;
   EmployeeName    : any = '';
+  newMessages :any;
 
   constructor(
     private _EmployeeMessages: EmployeeMessagesService,
@@ -44,16 +51,17 @@ export class EmployeeMessagesComponent implements OnInit {
       (res: any) => {
         console.log(res.data);
         this.EmployeeMessages = res.data.reverse();
-        this.getEmpData(res.data[0].sender).subscribe((result) => {
-          this.sender = result;
-        });
+        
       },
       (err:any) => {
         console.log(err);
         this.EmployeeMessages = [];
       }
     );
+    console.log("called")
   }
+
+
 
   getsenderMessages(emp: any) {
     console.log(emp._id)
@@ -121,6 +129,9 @@ export class EmployeeMessagesComponent implements OnInit {
         ],
       });
     }
+
+    
+
   }
 
   notOnlyWhitespace(control: FormControl): { [key: string]: boolean } | null {
@@ -129,5 +140,8 @@ export class EmployeeMessagesComponent implements OnInit {
     }
     return null;
   }   
+
+
+
 }
-   
+               

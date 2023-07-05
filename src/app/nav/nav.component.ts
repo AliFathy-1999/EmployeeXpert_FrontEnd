@@ -7,6 +7,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { EmployeeMessagesService } from '../service/employee-messages.service';
 import { AnnouncementService } from '../service/announcement.service';
 import { interval } from 'rxjs';
+import { EmployeeMessagesComponent } from '../employee-messages/employee-messages.component';
 
 @Component({
   selector: 'app-nav',
@@ -29,7 +30,7 @@ export class NavComponent {
       shareReplay()
     );
     constructor(private router:Router , 
-      private _EmployeeMessages: EmployeeMessagesService , private _Announcements: AnnouncementService){
+      private _EmployeeMessages: EmployeeMessagesService , private _Announcements: AnnouncementService , private message :EmployeeMessagesComponent ){
         if(this.currentUser.role =='USER'){
 
          this._Announcements.getAnnouncements().subscribe((res:any)=>{
@@ -46,8 +47,7 @@ export class NavComponent {
     
     gotopage(page:string){
       this.router.navigate([`${page}`])
-    }
-
+    }  
   
 
     toggleMessageBadgeVisibility(){
@@ -62,11 +62,13 @@ export class NavComponent {
       interval(4000).subscribe(() => {
         console.log("send")
         this._EmployeeMessages.getUserMessages().subscribe((res:any)=>{
-          console.log(res.data.length,this.empMessages.length)
+        
+          console.log(res.data,this.empMessages)
         if(res.data.length>this.empMessages.length){
           this.messageNotifications = true
           console.log("recieved")
-          this.announcements=res.data
+          this.empMessages=res.data
+          this.message.getEmpMessages
         }
         });
       });
@@ -77,7 +79,7 @@ export class NavComponent {
       interval(4000).subscribe(() => {
         console.log("send")
         this._Announcements.getAnnouncements().subscribe((res:any)=>{
-          console.log(res.data.length,this.announcements.length)
+          console.log(res.data,this.announcements)
         if(res.data.length>this.announcements.length){
           this.announcementNotifications= true
           console.log("recieved")
@@ -88,4 +90,4 @@ export class NavComponent {
     }
 
 
-  }          
+  }                                  
