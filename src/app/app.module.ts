@@ -38,6 +38,7 @@ import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MatTableModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true },CookieService
+
   ],
   bootstrap: [AppComponent]
 })
