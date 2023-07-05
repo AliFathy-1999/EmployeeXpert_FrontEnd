@@ -28,6 +28,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { AddVacationComponent } from './add-vacation/add-vacation.component';
+import { VacationDialogComponent } from './vacation-dialog/vacation-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PayrollComponent } from './payroll/payroll.component';
+import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +51,15 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     NavComponent,
     DashComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent
+    GetEmployeeComponent,
+    AddVacationComponent,
+    VacationDialogComponent,
+    UpdateEmployeeComponent,
+    EmployeeDetailsComponent,
+    PayrollComponent,
+    PayrollDialogComponent,
+    EmployeePayrollComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +69,8 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -61,6 +85,14 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
+    MatDialogModule,
+    NgxPaginationModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    FontAwesomeModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     AuthInterceptProvidoer
