@@ -18,7 +18,7 @@ ReactiveFormsModule,
 })
 export class AnnouncementComponent {
     allAnnouncements :any = []
-    currentUser     :any = {role:"ADMIN"}
+    currentUser     :any = {role:"USER"}
     newAnnouncement!: FormGroup;
    
 constructor(private _announcements:AnnouncementService,private formBuilder: FormBuilder){

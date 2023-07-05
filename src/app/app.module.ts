@@ -28,6 +28,20 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { AddVacationComponent } from './add-vacation/add-vacation.component';
+import { VacationDialogComponent } from './vacation-dialog/vacation-dialog.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PayrollComponent } from './payroll/payroll.component';
+import { PayrollDialogComponent } from './payroll-dialog/payroll-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
 import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -44,10 +58,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSn
     NavComponent,
     DashComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent,
-    EmployeeAttendanceComponent,
-    AllEmployeeAttendanceComponent,
-    CheckinCheckoutComponent,
+    GetEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +68,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSn
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -71,12 +84,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'; // Import MatSn
     MatNativeDateModule,
     MatInputModule,
     MatRadioModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule, // Add MatPaginatorModule to the imports array
-    MatTableModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSnackBarModule 
   ],
   providers: [
     AuthInterceptProvidoer
