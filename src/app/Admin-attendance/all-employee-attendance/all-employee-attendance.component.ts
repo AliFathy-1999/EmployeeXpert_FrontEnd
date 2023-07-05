@@ -15,11 +15,9 @@ export class AllEmployeeAttendanceComponent {
   ngOnInit() {
   const page = 1; // Current page
   const limit = 10; // Number of documents per page
-
-  this.allAttendanceService.all(page, limit).subscribe(
+    this.allAttendanceService.allattendance(page, limit).subscribe(
     (response) => {
       console.log('response',response);
-
 
       this.attendances = response.data;
       this.isLoading = false; // set isLoading to false once data is loaded
@@ -29,6 +27,30 @@ export class AllEmployeeAttendanceComponent {
     (error: any) => {
       console.log(error);
     }
-  );
+    )
 }
+
+
+getAttendance(pageIndex: number = 0, pageSize: number = 5) {
+    this.allAttendanceService.allattendance(pageIndex+ 1, pageSize).subscribe(
+    (response) => {
+      console.log('response',response);
+
+      this.attendances = response.data;
+      this.isLoading = false; // set isLoading to false once data is loaded
+
+      console.log('this.attendances',this.attendances[0]);
+  },
+    (error: any) => {
+      console.log(error);
+    }
+    )
+}
+
+onPaginateChange(event: any) {
+  const pageIndex = event.pageIndex;
+  const pageSize = event.pageSize;
+  this.getAttendance(pageIndex, pageSize);
+}
+
 }
