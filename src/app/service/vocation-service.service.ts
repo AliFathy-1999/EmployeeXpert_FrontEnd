@@ -22,7 +22,7 @@ export class VocationServiceService {
 
   }
 
-  addVacationByAdmin(vacationData:any): Observable<any> {
+  addVacationByAdmin(vacationData:obj): Observable<any> {
    
     // const options = { withCredentials: true};
     return this._http.post('http://localhost:4000/vacations/admin', vacationData);
