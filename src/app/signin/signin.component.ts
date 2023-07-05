@@ -17,23 +17,23 @@ export class SigninComponent implements OnInit{
       password:new FormControl('' , [Validators.required])
   });
   }
-  constructor(private formBuilder: FormBuilder,private _global:GlobalService,private toastr:ToastrService,private _cookieService:CookieService) {
+  constructor(private formBuilder: FormBuilder,private _global:GlobalService,private toastr:ToastrService,private _cookieService:CookieService,private router:Router) {
 
   }
 
   onSubmit(){
     this._global.signIn(this.formData.value).subscribe((res:any) =>{
       // sessionStorage.setItem('token',res.data.token);
-      // this.toastr.success("Signin successfully")
+      this.toastr.success("Signin successfully")
       this._cookieService.delete('token');
       this._cookieService.set('token', res.data.token);
       this._global.saveCurrentUser();
       const user=this._global.currentUser.getValue();
-      // if(user.role == 'user'){
-      //   this._router.navigate(['/','home'])
-      // }else{
-      //   this._router.navigate(['/admin/','categories'])
-      // }
+      if(user.role == 'USER'){
+        this.router.navigate(['/me/','dash'])
+      }else{
+        this.router.navigate(['/dashboard/'])
+      }
     },(err)=>{
       console.log(err.message);
       this.toastr.success(err.message)

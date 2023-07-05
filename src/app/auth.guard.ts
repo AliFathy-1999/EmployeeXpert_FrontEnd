@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate{
   if(this._auth.currentUser.getValue()!==null){
     return true;
   }else{
-    // this._router.navigate(['/me/payroll']);
+    this._router.navigate(['/']);
     return false;
   }
 

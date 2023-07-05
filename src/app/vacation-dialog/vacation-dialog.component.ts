@@ -26,7 +26,11 @@ export class VacationDialogComponent {
   status!: Status;
   employeeId!: Number;
   totalDays!: Number;
-
+  vacationObj:object={
+    employeeId:Number,
+    totalDays:Number,
+    status: Status
+  }
   oldData:any
 
   constructor(

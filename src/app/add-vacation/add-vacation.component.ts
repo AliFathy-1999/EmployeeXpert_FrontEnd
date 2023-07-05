@@ -37,7 +37,7 @@ export class AddVacationComponent implements OnInit {
        }
 
        
- displayedColumns: string[] = ['firstName', 'lastName', 'reasonForVacation','fromDay','toDay','status','action'];
+ displayedColumns: string[] = ['firstName', 'lastName', 'reasonForVacation','fromDay','toDay','status'];
          dataSource = new MatTableDataSource<Vacation>();
          @ViewChild(MatPaginator) paginator!: MatPaginator;
        
