@@ -28,6 +28,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import { GetEmployeeComponent } from './employee/get-employee/get-employee.component';
+import { EmployeeAttendanceComponent } from './User-attendance/employee-attendance/employee-attendance.component';
+import { CheckinCheckoutComponent } from './User-attendance/checkin-checkout/checkin-checkout.component';
+import { AllEmployeeAttendanceComponent } from './Admin-attendance/all-employee-attendance/all-employee-attendance.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
     NavComponent,
     DashComponent,
     AddEmployeeComponent,
-    GetEmployeeComponent
+    GetEmployeeComponent,
+    EmployeeAttendanceComponent,
+    CheckinCheckoutComponent,
+    AllEmployeeAttendanceComponent
   ],
   imports: [
     BrowserModule,
