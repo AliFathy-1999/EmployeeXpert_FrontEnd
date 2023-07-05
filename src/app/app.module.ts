@@ -41,6 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { CookieService } from 'ngx-cookie-service';
+import { EmployeeVacarionComponent } from './employee-vacation/employee-vacation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CookieService } from 'ngx-cookie-service';
     PayrollComponent,
     PayrollDialogComponent,
     EmployeePayrollComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    EmployeeVacarionComponent
   ],
   imports: [
     BrowserModule,
