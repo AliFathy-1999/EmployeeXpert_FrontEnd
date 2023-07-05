@@ -21,7 +21,13 @@ deleteEmployeeSalaryById(id: number): Observable<any> {
 
 }
 
-editSalary(id: number, data: object) {
+editSalary(id: number, data: object) :Observable<any>{
   return this._HttpClient.patch(`${this.ROOT_URL}salary/${id}`, data);
 }
+
+getEmployeeSalary(): Observable<any>{
+  return this._HttpClient.get(`${this.ROOT_URL}employee/salary/`);
+}
+
+
 }

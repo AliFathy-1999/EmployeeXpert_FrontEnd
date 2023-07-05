@@ -7,6 +7,7 @@ import { GetEmployeeComponent } from './employee/get-employee/get-employee.compo
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { PayrollComponent } from './payroll/payroll.component';
+import { EmployeePayrollComponent } from './employee-payroll/employee-payroll.component';
 
 const routes: Routes = [
   { path: 'signin', component: SigninComponent },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'getAllEmployees', component: GetEmployeeComponent},
   { path: 'updateEmployee/:id', component: UpdateEmployeeComponent},
   { path: 'employeeDetails/:id', component: EmployeeDetailsComponent},
-  { path: 'payroll', component: PayrollComponent }
+  { path: 'payroll', component: PayrollComponent },
+  { path: 'me/payroll', component: EmployeePayrollComponent }
+
 
 ];
 
